@@ -44,10 +44,11 @@
                         <p:commandButton   value="#{msgs.login}"                                                
                                            style="width:130px; height:35px; margin-top:25px; background-color: #428BCA;" 
                                            ajax="false"
-                                           action="#{sessionBean.login()}" />                                                         
+                                           action="#{sessionBean.authenticate()}" />                                                         
                     </p:fieldset> 
                 </center>
             </h:form>              
         </ui:decorate>
     </h:body>
 </html>
+

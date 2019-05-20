@@ -1,41 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.Connection;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.NavigationHandler;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 /**
  *
- * @author User
+ * @Author: Dr. Firas Al-Hawari
+ *
  */
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
-    
     private String username;
-    private String password;
-        private int menuIndex = 0;
+    private String password;    
+    private Connection connection; 
+    private int selectedItemId;     
+    private int menuIndex = 0;
 
-    public int getMenuIndex() {
-        return menuIndex;
-    }
-
-    public void setMenuIndex(int menuIndex) {
-        this.menuIndex = menuIndex;
-    }
-
-    /**
-     * Creates a new instance of SessionBean
-     */
     public SessionBean() {
     }
-    
-     public String getUsername() {
+
+    public String getUsername() {
         return username;
     }
 
@@ -50,16 +39,77 @@ public class SessionBean implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
-    public String authenticate(){
-        if(password.equals("123")){
-            return "welcome";
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public int getSelectedItemId() {
+        return selectedItemId;
+    }
+
+    public void setSelectedItemId(int selectedItemId) {
+        this.selectedItemId = selectedItemId;
+    }    
+
+    public int getMenuIndex() {
+        return menuIndex;
+    }
+
+    public void setMenuIndex(int menuIndex) {
+        this.menuIndex = menuIndex;
+    }
+
+    public void login() throws Exception {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        boolean success = true;
+
+        try {
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+
         }
-        else{
-            return "failed";
+
+        if (success) {
+            navigate("/first_page");
         }
     }
-    
+
+    public void logout() throws Exception {
+        try {
+            // Release and close database resources and connections 
+            if (connection != null) {
+                if (!connection.getAutoCommit()) {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                }
+
+                connection.close();
+                connection = null;
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            setPassword(null);
+            setUsername(null);
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().invalidateSession();
+        }
+    }
+
+    public void navigate(String url) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+
+        if (facesContext != null) {
+            NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
+            navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
+        }
+    }
 }

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.manage_vacancies}</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml">  
+            <h:form id="add_vacancy">            
+                <p:messages id="msgs" closable="true" globalOnly="true"/>
+
+                <p:panel header="#{msgs.vacancy_info}"                            
+                         style="min-height:400px; 
+                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                    <h:panelGrid id="add"
+                                 style="float: #{langBean.styleFloat};" 
+                                 columns="3"                              
+                                 dir="#{langBean.dir}">
+                        <p:outputLabel value="#{msgs.vacancy_title}:" for="vacancy_title"/>
+                        <p:inputText id="vacancy_title"
+                                     style="width:400px"
+                                     value="#{addEditVacancyBean.vacancyTitle}"                                      
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage="#{msgs.required_msg}">
+                        </p:inputText>
+                        <h:message for="vacancy_title" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.vacancy_description}:" for="vacancy_desc"/>
+                        <p:inputTextarea id="vacancy_desc"
+                                     value="#{addEditVacancyBean.vacancyDescription}"
+                                     style="width:600px"
+                                     dir="rtl"
+                                     required="true"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputTextarea>
+                        <h:message for="vacancy_desc" styleClass="errorMsg"/>
+
+                        <p:outputLabel value="#{msgs.salary}:" for="vacancy_salary"/>
+                        <p:inputNumber id="vacancy_salary" value="#{addEditVacancyBean.vacancySalary}" minValue="0.0" maxValue="10000"
+                                            style="width:600px"
+                                     dir="rtl"
+                                     required="true"
+                                     requiredMessage=" #{msgs.required_msg}"
+                                       
+                                       />
+                        <h:message for="vacancy_salary" styleClass="errorMsg"/>                    
+
+                        
+                                   <p:outputLabel value="#{msgs.date}:" for="date"/>
+                        <p:calendar id="date"
+                                    value="#{addEditVacancyBean.date}"
+                                    dir="ltr"
+                                    pattern="yyyy-MM-dd" 
+                                    required="true"
+                                    navigator="true"
+                                    yearRange="c-10:c+1"
+                                    timeInput="true"
+                                    requiredMessage=" #{msgs.required_msg}">   
+                        </p:calendar>
+
+                        <h:message for="date" styleClass="errorMsg"/> 
+                                            
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:commandButton value="#{msgs.save}"
+                                 styleClass="commandButton"
+                                 icon="ui-icon-disk"
+                                 iconPos="#{langBean.styleFloat}"
+                                 ajax="false"
+                                 style="float:#{langBean.styleFloat}"                                                                   
+                                 actionListener="#{addEditVacancyBean.saveVacancy()}" />
+                <p:commandButton value="#{msgs.cancel}"
+                                 icon="ui-icon-cancel"  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 immediate="true" 
+                                 style="float:#{langBean.styleFloat}"                                 
+                                 action="manage_vacancies"  />                                   
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+

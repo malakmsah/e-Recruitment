@@ -34,7 +34,7 @@ public class ManageEventsBean implements Serializable{
     @PostConstruct
     public void init(){
         try {            
-            //events = eventsDao.buildEvents(eventTypesDao.buildEventTypesMap());            
+            events = eventsDao.buildEvents(eventTypesDao.buildEventTypesMap());            
         } catch (Exception ex) {
             Logger.getLogger(ManageEventsBean.class.getName()).log(Level.SEVERE, null, ex);
         }

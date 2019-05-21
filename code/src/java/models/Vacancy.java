@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package models;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -48,5 +47,15 @@ public class Vacancy  implements Serializable{
 
     public void setCreatedAt(Timestamp created_at) {
         this.created_at = created_at;
+    }
+  
+    public Vacancy() {
+    }
+
+    public Vacancy(int vacancyId, String vacancyTitle, String vacancyDescription, Timestamp date) {
+        this.id = vacancyId;
+        this.position = vacancyTitle;
+        this.description = vacancyDescription;
+        this.date = date;
     }
 }

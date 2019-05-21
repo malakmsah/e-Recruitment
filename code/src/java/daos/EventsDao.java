@@ -82,7 +82,7 @@ public class EventsDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
             
-            String sql = "INSERT INTO EVENTS (EVENT_ID,"
+            String sql = "INSERT INTO EVENTS ("
                     + " NAME_AR,"
                     + " NAME_EN,"
                     + " PLACE_AR,"
@@ -90,7 +90,7 @@ public class EventsDao extends ConnectionDao {
                     + " EVENT_DATE,"
                     + " CAPACITY,"
                     + " EVENT_TYPE_ID)"
-                    + " VALUES ((select max(EVENT_ID) from EVENTS)+1,?,?,?,?,?,?,?)";
+                    + " VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql); 
             
             ps.setString(1, event.getNameAr());

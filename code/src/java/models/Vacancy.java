@@ -52,10 +52,10 @@ public class Vacancy  implements Serializable{
     public Vacancy() {
     }
 
-    public Vacancy(int vacancyId, String vacancyTitle, String vacancyDescription, Timestamp date) {
-        this.id = vacancyId;
-        this.position = vacancyTitle;
-        this.description = vacancyDescription;
+    public Vacancy(int id, String position, String description, Timestamp date) {
+        this.id = id;
+        this.position = position;
+        this.description = description;
         this.date = date;
     }
 }

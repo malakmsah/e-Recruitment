@@ -23,9 +23,9 @@ public class VacancyDao extends ConnectionDao {
 
     public static void main(String[] args) {
         try {
-            VacancyDao. dao = new VacancyDao.();
+            VacancyDao.dao = new VacancyDao.();
         } catch (Exception ex) {
-            Logger.getLogger(VacancyDao..class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VacancyDao.. class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

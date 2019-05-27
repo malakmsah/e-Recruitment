@@ -1,7 +1,6 @@
 package java.daos;
 
 import java.models.RecruiterAddress;
-import java.sql.*;
 
 public class RecruiterAddressDao extends ConnectionDao {
 
@@ -68,7 +67,6 @@ public class RecruiterAddressDao extends ConnectionDao {
     }
 
     /**
-     *
      * @param recruiterId
      * @return
      * @throws Exception

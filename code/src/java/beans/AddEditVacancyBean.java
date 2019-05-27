@@ -9,12 +9,14 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.daos.VacancyDao.;
+import java.daos.VacancyDao.*;
 import java.io.Serializable;
 import java.models.Vacancy;
 import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+;
 
 /**
  * @author User
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 @Named(value = "addEditVacancyBean")
 @ViewScoped
 public class AddEditVacancyBean implements Serializable {
-    private final VacancyDao. vacanciesDao = new VacancyDao.();
+    private final VacancyDao.vacanciesDao =new VacancyDao.();
     private int id;
     private String position;
     private String description;

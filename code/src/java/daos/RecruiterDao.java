@@ -5,9 +5,6 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * @author Dr. Firas Al-Hawari
- */
 public class RecruiterDao extends ConnectionDao {
 
     private final RecruiterAddressDao recruiterAddressDao = new RecruiterAddressDao();
@@ -71,11 +68,8 @@ public class RecruiterDao extends ConnectionDao {
             ps.setTimestamp(10, new Timestamp(recruiters.getFoundedAt().getTime()));
             ps.setTimestamp(11, new Timestamp(new java.util.Date().getTime()));
 
-
             ps.executeUpdate();
-
             ps.close();
-
 
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());

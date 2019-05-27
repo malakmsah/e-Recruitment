@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class CountryDao extends ConnectionDao {
 
-
     /**
      * @param id
      * @return
@@ -23,7 +22,7 @@ public class CountryDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "SELECT *  FROM COUNTRY  WHERE ID ?";
+            String sql = "SELECT * FROM COUNTRY WHERE ID ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -74,6 +73,4 @@ public class CountryDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-
-
 }

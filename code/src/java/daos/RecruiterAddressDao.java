@@ -3,9 +3,6 @@ package java.daos;
 import java.models.RecruiterAddress;
 import java.sql.*;
 
-/**
- * @author Dr. Firas Al-Hawari
- */
 public class RecruiterAddressDao extends ConnectionDao {
 
     /**

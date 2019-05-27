@@ -1,8 +1,4 @@
-package converter;
-
-
-import daos.CityDao;
-import models.City;
+package java.converter;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -12,6 +8,8 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.daos.CityDao;
+import java.models.City;
 
 @Named(value = "cityConverter")
 @ViewScoped
@@ -37,8 +35,7 @@ public class CityConverter implements Converter {
         }
         if (object instanceof City) {
             City city = (City) object;
-
-            return city.getId().toString();
+            return Integer.toString(city.getId());
         } else {
             throw new ConverterException(new FacesMessage(object + " is not a valid City"));
         }

@@ -1,7 +1,6 @@
-package daos;
+package java.daos;
 
-import models.Country;
-
+import java.models.Country;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

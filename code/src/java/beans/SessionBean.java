@@ -1,25 +1,24 @@
 package beans;
 
-import java.io.Serializable;
-import java.sql.Connection;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.NavigationHandler;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import java.io.Serializable;
+import java.sql.Connection;
 
 /**
- *
  * @Author: Dr. Firas Al-Hawari
- *
  */
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
     private String username;
-    private String password;    
-    private Connection connection; 
-    private int selectedItemId;     
+    private String password;
+    private Connection connection;
+    private int selectedItemId;
     private int menuIndex = 0;
+    private int recruiterId = 0;
 
     public SessionBean() {
     }
@@ -54,7 +53,7 @@ public class SessionBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    }    
+    }
 
     public int getMenuIndex() {
         return menuIndex;
@@ -83,7 +82,7 @@ public class SessionBean implements Serializable {
 
     public void logout() throws Exception {
         try {
-            // Release and close database resources and connections 
+            // Release and close database resources and connections
             if (connection != null) {
                 if (!connection.getAutoCommit()) {
                     connection.rollback();
@@ -111,5 +110,13 @@ public class SessionBean implements Serializable {
             NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
             navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
         }
+    }
+
+    public int getRecruiterId() {
+        return recruiterId;
+    }
+
+    public void setRecruiterId(int recruiterId) {
+        this.recruiterId = recruiterId;
     }
 }

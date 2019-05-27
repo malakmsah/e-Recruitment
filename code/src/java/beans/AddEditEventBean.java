@@ -1,31 +1,30 @@
 package beans;
 
-import daos.EventTypesDao;
-import daos.EventsDao;
+
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.daos.EventTypesDao;
+import java.daos.EventsDao;
 import java.io.Serializable;
+import java.models.Event;
+import java.models.EventType;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import models.Event;
-import models.EventType;
 
 /**
- *
  * @author Firas.Alhawari
- * 
  */
 @Named(value = "addEditEventBean")
 @ViewScoped
-public class AddEditEventBean implements Serializable{
-    private ArrayList<EventType> eventTypes;
+public class AddEditEventBean implements Serializable {
     private final EventTypesDao eventTypesDao = new EventTypesDao();
     private final EventsDao eventsDao = new EventsDao();
+    private ArrayList<EventType> eventTypes;
     private int eventId;
     private int eventTypeId;
     private String nameEn;
@@ -33,22 +32,22 @@ public class AddEditEventBean implements Serializable{
     private String placeEn;
     private String placeAr;
     private int capacity;
-    private Date date;   
-    
+    private Date date;
+
     @Inject
-    private SessionBean sessionBean;
-    
-    public AddEditEventBean() {        
+    private beans.SessionBean sessionBean;
+
+    public AddEditEventBean() {
     }
-    
+
     @PostConstruct
-    public void init(){                
+    public void init() {
         try {
             eventId = sessionBean.getSelectedItemId();
             eventTypes = eventTypesDao.buildEventTypes();
-            
-            if(eventId > 0){
-                Event event = eventsDao.getEvent(eventId);                
+
+            if (eventId > 0) {
+                Event event = eventsDao.getEvent(eventId);
                 nameEn = event.getNameEn();
                 nameAr = event.getNameAr();
                 placeEn = event.getPlaceEn();
@@ -64,7 +63,7 @@ public class AddEditEventBean implements Serializable{
 
     public ArrayList<EventType> getEventTypes() {
         return eventTypes;
-    }        
+    }
 
     public int getEventTypeId() {
         return eventTypeId;
@@ -120,12 +119,12 @@ public class AddEditEventBean implements Serializable{
 
     public void setDate(Date date) {
         this.date = date;
-    }        
-        
+    }
+
     public void saveEvent() {
         try {
             Event event = new Event();
-            
+
             EventType eventType = eventTypes.get(eventTypeId - 1);
             event.setEventId(eventId);
             event.setType(eventType);
@@ -135,7 +134,7 @@ public class AddEditEventBean implements Serializable{
             event.setPlaceAr(placeAr);
             event.setCapacity(capacity);
             event.setDate(new Timestamp(date.getTime()));
-            
+
             if (sessionBean.getSelectedItemId() > 0) {
                 eventsDao.updateEvent(event);
             } else {

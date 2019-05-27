@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package daos;
+package java.daos;
 
+//import models.Vacancy;
+
+import java.models.Vacancy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +16,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import models.Vacancy;
-
 /**
  * @author User
  */
 public class VacanciesDao extends ConnectionDao {
+
+    public static void main(String[] args) {
+        try {
+            VacanciesDao dao = new VacanciesDao();
+        } catch (Exception ex) {
+            Logger.getLogger(VacanciesDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public ArrayList<Vacancy> buildVacancies()
             throws Exception {
@@ -50,8 +59,8 @@ public class VacanciesDao extends ConnectionDao {
 
         vacancy.setId(rs.getInt("id"));
         vacancy.setPosition(rs.getString("POSITION"));
-        vacancy.setVacancyDescription(rs.getString("DESCRIPTION"));
-        vacancy.setDate(rs.getTimestamp("CREATED_AT"));
+        vacancy.setDescription(rs.getString("DESCRIPTION"));
+        vacancy.setCreatedAt(rs.getTimestamp("CREATED_AT"));
         return vacancy;
     }
 
@@ -67,7 +76,7 @@ public class VacanciesDao extends ConnectionDao {
 
             ps.setString(1, vacancy.getPosition());
             ps.setString(2, vacancy.getDescription());
-            ps.setTimestamp(3, vacancy.getDate());
+            ps.setTimestamp(3, vacancy.getCreatedAt());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -88,7 +97,7 @@ public class VacanciesDao extends ConnectionDao {
 
             ps.setString(1, vacancy.getPosition());
             ps.setString(2, vacancy.getDescription());
-            ps.setTimestamp(3, vacancy.getDate());
+            ps.setTimestamp(3, vacancy.getCreatedAt());
             ps.setInt(4, vacancy.getId());
 
             ps.executeUpdate();
@@ -134,14 +143,6 @@ public class VacanciesDao extends ConnectionDao {
             return vacancy;
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            VacanciesDao dao = new VacanciesDao();
-        } catch (Exception ex) {
-            Logger.getLogger(VacanciesDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

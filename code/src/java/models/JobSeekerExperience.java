@@ -3,27 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package java.models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
- *
  * @author MalakMSAH
  */
-public class JobSeekerExperience  implements Serializable{
+public class JobSeekerExperience implements Serializable {
     private int experience_id;
     private int js_id;
-    
+
     public int getExperienceId() {
         return experience_id;
     }
 
     public void setExperienceId(int experience_id) {
         this.experience_id = experience_id;
-    }    
-    
+    }
+
     public int getJobSeekerId() {
         return js_id;
     }

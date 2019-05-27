@@ -5,20 +5,16 @@
  */
 package beans;
 
-import daos.VacanciesDao;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-
 import javax.inject.Inject;
-
-import models.Vacancy;
+import javax.inject.Named;
+import java.daos.VacanciesDao;
+import java.io.Serializable;
+import java.models.Vacancy;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author User
@@ -26,11 +22,16 @@ import models.Vacancy;
 @Named(value = "addEditVacancyBean")
 @ViewScoped
 public class AddEditVacancyBean implements Serializable {
+    private final VacanciesDao vacanciesDao = new VacanciesDao();
     private int id;
     private String position;
     private String description;
-    private Date date;
-    private final VacanciesDao vacanciesDao = new VacanciesDao();
+    private Timestamp created_at;
+    @Inject
+    private beans.SessionBean sessionBean;
+
+    public AddEditVacancyBean() {
+    }
 
     public String getPosition() {
         return position;
@@ -48,12 +49,12 @@ public class AddEditVacancyBean implements Serializable {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public Timestamp getCreatedAt() {
+        return created_at;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreatedAt(Timestamp created_at) {
+        this.created_at = created_at;
     }
 
     public int getId() {
@@ -64,12 +65,6 @@ public class AddEditVacancyBean implements Serializable {
         this.id = id;
     }
 
-    @Inject
-    private SessionBean sessionBean;
-
-    public AddEditVacancyBean() {
-    }
-
     @PostConstruct
     public void init() {
         try {
@@ -78,9 +73,9 @@ public class AddEditVacancyBean implements Serializable {
 
             if (id > 0) {
                 Vacancy vacancy = vacanciesDao.getVacancy(id);
-                position = vacancy.getposition();
-                description = vacancy.getdescription();
-                date = vacancy.getDate();
+                position = vacancy.getPosition();
+                description = vacancy.getDescription();
+                created_at = vacancy.getCreatedAt();
             }
         } catch (Exception ex) {
             Logger.getLogger(AddEditVacancyBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,9 +86,9 @@ public class AddEditVacancyBean implements Serializable {
         try {
             Vacancy vacancy = new Vacancy();
             vacancy.setId(id);
-            vacancy.setPositoin(position);
+            vacancy.setPosition(position);
             vacancy.setDescription(description);
-            vacancy.setDate(new Timestamp(date.getTime()));
+            vacancy.setCreatedAt(new Timestamp(created_at.getTime()));
             if (sessionBean.getSelectedItemId() > 0) {
                 vacanciesDao.updateVacancy(vacancy);
             } else {

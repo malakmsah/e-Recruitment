@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package java.models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
- *
  * @author MalakMSAH
  */
-public class Interest  implements Serializable{
+public class Interest implements Serializable {
     private int id;
     private String name_en;
     private String name_ar;
-    
+
     public int getId() {
         return id;
     }
@@ -24,8 +22,8 @@ public class Interest  implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
-      public String getNameEn() {
+
+    public String getNameEn() {
         return name_en;
     }
 

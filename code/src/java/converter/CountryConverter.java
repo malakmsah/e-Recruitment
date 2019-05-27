@@ -1,8 +1,5 @@
-package converter;
+package java.converter;
 
-
-import daos.CountryDao;
-import models.Country;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -12,6 +9,8 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.daos.CountryDao;
+import java.models.Country;
 
 
 @Named(value = "countryConverter")
@@ -38,8 +37,7 @@ public class CountryConverter implements Converter {
         }
         if (object instanceof Country) {
             Country country = (Country) object;
-
-            return country.getId().toString();
+            return Integer.toString(country.getId());
         } else {
             throw new ConverterException(new FacesMessage(object + " is not a valid Country"));
         }

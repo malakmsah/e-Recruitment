@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package java.models;
 
 import java.io.Serializable;
 
 /**
- *
  * @author MalakMSAH
  */
-public class DegreeType implements Serializable{
+public class DegreeType implements Serializable {
     private int id;
     private String nameEn;
     private String nameAr;
-    
+
     public int getId() {
         return id;
     }
@@ -23,8 +22,8 @@ public class DegreeType implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
-      public String getNameEn() {
+
+    public String getNameEn() {
         return nameEn;
     }
 

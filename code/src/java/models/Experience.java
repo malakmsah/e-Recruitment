@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package java.models;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- *
  * @author MalakMSAH
  */
-public class Experience  implements Serializable{
+public class Experience implements Serializable {
     private int id;
     private String position;
     private String company;
@@ -21,7 +20,7 @@ public class Experience  implements Serializable{
     private Date start_date;
     private Date end_date;
     private Timestamp created_at;
-      
+
     public int getId() {
         return id;
     }
@@ -29,7 +28,7 @@ public class Experience  implements Serializable{
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getPosition() {
         return position;
     }
@@ -37,7 +36,7 @@ public class Experience  implements Serializable{
     public void setPosition(String position) {
         this.position = position;
     }
-    
+
     public String getCompany() {
         return company;
     }
@@ -45,7 +44,7 @@ public class Experience  implements Serializable{
     public void setCompany(String company) {
         this.company = company;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -53,7 +52,7 @@ public class Experience  implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public Date getStartDate() {
         return start_date;
     }
@@ -61,7 +60,7 @@ public class Experience  implements Serializable{
     public void setStartDate(Date start_date) {
         this.start_date = start_date;
     }
-    
+
     public Date getEndDate() {
         return end_date;
     }
@@ -69,7 +68,7 @@ public class Experience  implements Serializable{
     public void setEndDate(Date end_date) {
         this.end_date = end_date;
     }
-    
+
     public Timestamp getCreatedAt() {
         return created_at;
     }

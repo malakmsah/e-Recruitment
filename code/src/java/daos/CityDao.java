@@ -1,7 +1,6 @@
-package daos;
+package java.daos;
 
-import models.City;
-
+import java.models.City;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +50,6 @@ public class CityDao extends ConnectionDao {
         city.setNameAr(rs.getString("NAME_EN"));
         return city;
     }
-
 
     public List<City> getAllCity() throws Exception {
         List<City> list = new ArrayList<>();

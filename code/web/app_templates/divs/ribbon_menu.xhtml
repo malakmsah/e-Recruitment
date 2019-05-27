@@ -2,46 +2,46 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">  
-    <h:form id="ribbon_menu"             
-            style="direction:#{langBean.dir}; width:100%">           
-        <p:ribbon activeIndex="#{sessionBean.menuIndex}">                        
-            <p:tab title="#{msgs.vacancies}">  
+>
+    <h:form id="ribbon_menu"
+            style="direction:#{langBean.dir}; width:100%">
+        <p:ribbon activeIndex="#{sessionBean.menuIndex}">
+            <p:tab title="#{msgs.vacancies}">
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.create_vacancy}" 
-                                      styleClass="ribbonButton"
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/events/manage_events.xhtml">                         
+                    <p:commandButton value="#{msgs.create_vacancy}"
+                                     styleClass="ribbonButton"
+                                     style="float:#{langBean.styleFloat};"
+                                     actionListener="#{sessionBean.setMenuIndex(0)}"
+                                     action="/events/manage_events.xhtml">
                     </p:commandButton>
-                    
-                    <p:commandButton  value="#{msgs.edit_vacancy}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="/events/manage_events.xhtml">                         
+
+                    <p:commandButton value="#{msgs.edit_vacancy}"
+                                     styleClass="ribbonButton"
+                                     style="float:#{langBean.styleFloat};"
+                                     actionListener="#{sessionBean.setMenuIndex(1)}"
+                                     action="/events/manage_events.xhtml">
                     </p:commandButton>
-                </p:ribbonGroup>               
+                </p:ribbonGroup>
             </p:tab>
-            
-                <p:tab title="#{msgs.account}">  
+
+            <p:tab title="#{msgs.account}">
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.edit_account}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/events/manage_events.xhtml">                         
+                    <p:commandButton value="#{msgs.edit_account}"
+                                     styleClass="ribbonButton"
+                                     style="float:#{langBean.styleFloat};"
+                                     actionListener="#{sessionBean.setMenuIndex(0)}"
+                                     action="/events/manage_events.xhtml">
                     </p:commandButton>
-                    
-                            <p:commandButton  value="#{msgs.show_profile}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="/events/manage_events.xhtml">                         
+
+                    <p:commandButton value="#{msgs.show_profile}"
+                                     styleClass="ribbonButton"
+                                     style="float:#{langBean.styleFloat};"
+                                     actionListener="#{sessionBean.setMenuIndex(1)}"
+                                     action="/events/manage_events.xhtml">
                     </p:commandButton>
-                </p:ribbonGroup>               
+                </p:ribbonGroup>
             </p:tab>
         </p:ribbon>
     </h:form>

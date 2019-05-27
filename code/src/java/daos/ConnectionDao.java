@@ -1,23 +1,24 @@
-package daos;
+package java.daos;
 
 import beans.SessionBean;
-import java.io.Serializable;
-import java.sql.Connection;
+
 import javax.faces.context.FacesContext;
-import java.sql.DriverManager;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 public class ConnectionDao implements Serializable {
+    private final String oracleDriver;
+    private final boolean useConnectionPool = false;
+    private final SessionBean sessionBean;
     private DataSource dataSource;
     private String oracleUrl;
     private String databaseUsername;
     private String databasePassword;
-    private final String oracleDriver;    
-    private final boolean useConnectionPool = false;
-    private final SessionBean sessionBean;
-    
+
     public ConnectionDao() {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
@@ -26,7 +27,7 @@ public class ConnectionDao implements Serializable {
             //oracleUrl = "jdbc:oracle:thin:@192.168.120.213:1521:xe";
             //databaseUsername = "STD_SRVCS";
             //databasePassword = "CE471_second_2017";
-            
+
             // Online DB
             oracleUrl = "gjobs.ck0xb2jwzofh.us-west-2.rds.amazonaws.com";
             databaseUsername = "gjobs";
@@ -35,7 +36,7 @@ public class ConnectionDao implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         sessionBean = (SessionBean) context.getELContext().getELResolver().getValue(
-                                         context.getELContext(), null, "sessionBean");
+                context.getELContext(), null, "sessionBean");
     }
 
     public Connection getConnection() throws Exception {
@@ -46,7 +47,7 @@ public class ConnectionDao implements Serializable {
 
             if (connection == null || connection.isClosed()) {
                 connection = openSessionConnection();
-                sessionBean.setConnection(connection);                
+                sessionBean.setConnection(connection);
             }
         }
 
@@ -72,11 +73,11 @@ public class ConnectionDao implements Serializable {
                 dataSource = (DataSource) new InitialContext().lookup("jdbc/Ammar");
                 connection = dataSource.getConnection();
             } else {
-                Class.forName(oracleDriver).newInstance();
-                connection = DriverManager.getConnection(oracleUrl,databaseUsername,databasePassword);
+                Class.forName(oracleDriver).getDeclaredConstructor().newInstance();
+                connection = DriverManager.getConnection(oracleUrl, databaseUsername, databasePassword);
             }
         }
 
         return connection;
-    }   
+    }
 }

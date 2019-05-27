@@ -3,27 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package java.models;
 
 import java.io.Serializable;
 
 /**
- *
  * @author MalakMSAH
  */
-public class JobSeekerAddress  implements Serializable{
+public class JobSeekerAddress implements Serializable {
     private int js_id;
     private int country_id;
     private int city_id;
-    
+
     public int getJobSeekerId() {
         return js_id;
     }
 
     public void setJobSeekerId(int js_id) {
         this.js_id = js_id;
-    }    
-    
+    }
+
     public int getCountryId() {
         return country_id;
     }
@@ -31,7 +30,7 @@ public class JobSeekerAddress  implements Serializable{
     public void setCountryId(int country_id) {
         this.country_id = country_id;
     }
-    
+
     public int getCityId() {
         return city_id;
     }

@@ -5,27 +5,31 @@
  */
 package beans;
 
-import daos.VacanciesDao;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.daos.VacanciesDao;
 import java.io.Serializable;
+import java.models.Vacancy;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import models.Vacancy;
 
 /**
- *
  * @author User
  */
 @Named(value = "manageVacanciesBean")
 @ViewScoped
-public class ManageVacanciesBean implements Serializable{
-  private Vacancy selectedVacancy;  
+public class ManageVacanciesBean implements Serializable {
     private final VacanciesDao vacanciesDao = new VacanciesDao();
-    private ArrayList<Vacancy> vacancies; 
+    private Vacancy selectedVacancy;
+    private ArrayList<Vacancy> vacancies;
+    @Inject
+    private beans.SessionBean sessionBean;
+
+    public ManageVacanciesBean() {
+    }
 
     public Vacancy getSelectedVacancy() {
         return selectedVacancy;
@@ -42,32 +46,25 @@ public class ManageVacanciesBean implements Serializable{
     public void setVacancies(ArrayList<Vacancy> vacancies) {
         this.vacancies = vacancies;
     }
-    
-    @Inject 
-    private SessionBean sessionBean;
-    
-      public ManageVacanciesBean() {
-    }
-   
+
     @PostConstruct
-    public void init(){
-        try {            
-            vacancies = vacanciesDao.buildVacancies();            
+    public void init() {
+        try {
+            vacancies = vacanciesDao.buildVacancies();
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-   
-    
-    public void searchVacancies(){        
+
+    public void searchVacancies() {
     }
-    
-    public void saveSelectedItemId(){
+
+    public void saveSelectedItemId() {
         sessionBean.setSelectedItemId(selectedVacancy.getId());
     }
-    
-    public void deleteSelectedVacancy(){
+
+    public void deleteSelectedVacancy() {
         try {
             vacanciesDao.deleteVacancy(selectedVacancy.getId());
         } catch (Exception ex) {
@@ -77,6 +74,6 @@ public class ManageVacanciesBean implements Serializable{
     /**
      * Creates a new instance of ManageVacanciesBean
      */
-  
-    
+
+
 }

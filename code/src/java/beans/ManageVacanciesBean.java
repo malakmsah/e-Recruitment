@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.daos.VacanciesDao;
+import java.daos.VacancyDao.;
 import java.io.Serializable;
 import java.models.Vacancy;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 @Named(value = "manageVacanciesBean")
 @ViewScoped
 public class ManageVacanciesBean implements Serializable {
-    private final VacanciesDao vacanciesDao = new VacanciesDao();
+    private final VacancyDao. vacanciesDao = new VacancyDao.();
     private Vacancy selectedVacancy;
     private ArrayList<Vacancy> vacancies;
     @Inject

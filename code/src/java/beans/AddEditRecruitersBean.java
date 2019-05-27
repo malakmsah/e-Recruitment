@@ -2,7 +2,7 @@ package beans;
 
 import daos.CityDao;
 import daos.CountryDao;
-import daos.RecruiterAdressDao;
+import daos.RecruiterAddressDao;
 import daos.RecruitersDao;
 import models.City;
 import models.Country;
@@ -27,7 +27,7 @@ public class AddEditRecruitersBean implements Serializable {
 
 
     private final RecruitersDao recruitersDao = new RecruitersDao();
-    private final RecruiterAdressDao recruiterAdressDao = new RecruiterAdressDao();
+    private final RecruiterAddressDao recruiterAdressDao = new RecruiterAddressDao();
     private final CountryDao countryDao = new CountryDao();
     private final CityDao cityDao = new CityDao();
 
@@ -101,7 +101,7 @@ public class AddEditRecruitersBean implements Serializable {
         return recruitersDao;
     }
 
-    public RecruiterAdressDao getRecruiterAdressDao() {
+    public RecruiterAddressDao getRecruiterAddressDao() {
         return recruiterAdressDao;
     }
 

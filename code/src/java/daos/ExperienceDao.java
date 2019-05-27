@@ -46,7 +46,7 @@ public class ExperienceDao implements ConnectionDao {
         experience.setId(rs.getInt("ID"));
         experience.setPosition(rs.getString("POSITION"));
         experience.setCompany(rs.getString("COMPANY"));
-        experience.setDescription(rs.getString("ESCRIPTION"));
+        experience.setDescription(rs.getString("DSCRIPTION"));
         experience.setStartDate(rs.getDate("START_DATE"));
         experience.setEndDate(rs.getDate("END_DATE"));
         experience.setCreatedAt(rs.getTimestamp("CREATED_AT"));

@@ -1,6 +1,6 @@
 package java.daos;
 
-import java.models.RecruiterInterest;
+import java.models.RecruiterVacancy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecruiterInterestDao extends ConnectionDao {
+public class RecruiterVacancyDao extends ConnectionDao {
 
-    public RecruiterInterest get(int recruiterId) throws Exception {
-        List<RecruiterInterest> list = new ArrayList<>();
+    public RecruiterVacancy get(int recruiterId) throws Exception {
+        List<RecruiterVacancy> list = new ArrayList<>();
         Connection conn = getConnection();
 
         try {
-            String sql = "SELECT * FROM RECRUITER_INTEREST  WHERE RECRUITER_ID ? ORDER BY INTEREST_ID";
+            String sql = "SELECT * FROM RECRUITER_INTEREST  WHERE RECRUITER_ID ? ORDER BY VACANCY_ID";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, recruiterId);
             ResultSet rs = ps.executeQuery();
@@ -33,17 +33,17 @@ public class RecruiterInterestDao extends ConnectionDao {
         }
     }
 
-    private RecruiterInterest papulate(ResultSet rs) throws SQLException {
+    private RecruiterVacancy papulate(ResultSet rs) throws SQLException {
 
-        RecruiterInterest education = new RecruiterInterest();
+        RecruiterVacancy education = new RecruiterVacancy();
 
         education.setRecruiterId(rs.getInt("RECRUITER_ID"));
-        education.setInterestId(rs.getInt("INTEREST_ID"));
-        return recruiterInterest;
+        education.setVacancyId(rs.getInt("VACANCY_ID"));
+        return recruiterVacancy;
     }
 
-    public List<RecruiterInterest> getAll() throws Exception {
-        List<RecruiterInterest> list = new ArrayList<>();
+    public List<RecruiterVacancy> getAll() throws Exception {
+        List<RecruiterVacancy> list = new ArrayList<>();
         Connection conn = getConnection();
 
         try {

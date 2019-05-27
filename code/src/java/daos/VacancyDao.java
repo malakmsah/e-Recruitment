@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 /**
  * @author User
  */
-public class VacanciesDao extends ConnectionDao {
+public class VacancyDao extends ConnectionDao {
 
     public static void main(String[] args) {
         try {
@@ -36,7 +36,7 @@ public class VacanciesDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "SELECT * FROM VACANCIES";
+            String sql = "SELECT * FROM VACANCY";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
@@ -67,7 +67,7 @@ public class VacanciesDao extends ConnectionDao {
     public void insertVacancy(Vacancy vacancy) throws Exception {
         try {
             Connection conn = getConnection();
-            String sql = "INSERT INTO VACANCIES (id,"
+            String sql = "INSERT INTO VACANCY (id,"
                     + "POSITION,"
                     + "DESCRIPTION,"
                     + "CREATED_AT)"
@@ -89,7 +89,7 @@ public class VacanciesDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE VACANCIES SET POSITION=?,"
+            String sql = "UPDATE VACANCY SET POSITION=?,"
                     + " DESCRIPTION=?,"
                     + " CREATED_AT=?"
                     + " WHERE id=?";
@@ -112,7 +112,7 @@ public class VacanciesDao extends ConnectionDao {
         Connection conn = getConnection();
 
         try {
-            String sql = "DELETE FROM VACANCIES WHERE id=?";
+            String sql = "DELETE FROM VACANCY WHERE id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -129,7 +129,7 @@ public class VacanciesDao extends ConnectionDao {
             Vacancy vacancy = null;
             Connection conn = getConnection();
 
-            String sql = "SELECT POSITION,DESCRIPTION,CREATED_AT FROM VACANCIES WHERE id=?";
+            String sql = "SELECT POSITION,DESCRIPTION,CREATED_AT FROM VACANCY WHERE id=?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

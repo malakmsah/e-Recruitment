@@ -1,6 +1,6 @@
 package java.daos;
 
-import java.models.RecruiterInterest;
+import java.models.VacancyApplicants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecruiterInterestDao extends ConnectionDao {
+public class VacancyApplicantsDao extends ConnectionDao {
 
-    public RecruiterInterest get(int recruiterId) throws Exception {
-        List<RecruiterInterest> list = new ArrayList<>();
+    public VacancyApplicants get(int vacancyId) throws Exception {
+        List<VacancyApplicants> list = new ArrayList<>();
         Connection conn = getConnection();
 
         try {
-            String sql = "SELECT * FROM RECRUITER_INTEREST  WHERE RECRUITER_ID ? ORDER BY INTEREST_ID";
+            String sql = "SELECT * FROM VACANCY_APPLICANTS  WHERE VACANCY_ID ? ORDER BY JS_ID";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, recruiterId);
+            ps.setInt(1, vacancyId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -33,21 +33,21 @@ public class RecruiterInterestDao extends ConnectionDao {
         }
     }
 
-    private RecruiterInterest papulate(ResultSet rs) throws SQLException {
+    private VacancyApplicants papulate(ResultSet rs) throws SQLException {
 
-        RecruiterInterest education = new RecruiterInterest();
+        VacancyApplicants education = new VacancyApplicants();
 
-        education.setRecruiterId(rs.getInt("RECRUITER_ID"));
-        education.setInterestId(rs.getInt("INTEREST_ID"));
-        return recruiterInterest;
+        education.setRecruiterId(rs.getInt("VACANCY_ID"));
+        education.setInterestId(rs.getInt("JS_ID"));
+        return vacancyApplicants;
     }
 
-    public List<RecruiterInterest> getAll() throws Exception {
-        List<RecruiterInterest> list = new ArrayList<>();
+    public List<VacancyApplicants> getAll() throws Exception {
+        List<VacancyApplicants> list = new ArrayList<>();
         Connection conn = getConnection();
 
         try {
-            String sql = "SELECT * FROM RECRUITER_INTEREST ORDER BY RECRUITER_ID";
+            String sql = "SELECT * FROM VACANCY_APPLICANTS ORDER BY VACANCY_ID";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();

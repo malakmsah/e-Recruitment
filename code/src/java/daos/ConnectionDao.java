@@ -8,7 +8,11 @@ import java.sql.DriverManager;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
+/**
+ *
+ * Author: Dr. Firas Al-Hawari
+ *
+ */
 public class ConnectionDao implements Serializable {
     private DataSource dataSource;
     private String oracleUrl;
@@ -26,6 +30,12 @@ public class ConnectionDao implements Serializable {
             oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
             databaseUsername = "Ammar";
             databasePassword = "Abcd12345";
+            
+            
+             // Online DB
+//            oracleUrl = "gjujobs.cjqn4frndabf.eu-west-2.rds.amazonaws.com";
+//            databaseUsername = "gjobs";
+//            databasePassword = "gjobs12345";
         }
 
         FacesContext context = FacesContext.getCurrentInstance();
@@ -64,7 +74,7 @@ public class ConnectionDao implements Serializable {
 
         if (sessionBean != null) {
             if (useConnectionPool) {
-                dataSource = (DataSource) new InitialContext().lookup("jdbc/Ammar");
+                dataSource = (DataSource) new InitialContext().lookup("jdbc/test");
                 connection = dataSource.getConnection();
             } else {
                 Class.forName(oracleDriver).newInstance();

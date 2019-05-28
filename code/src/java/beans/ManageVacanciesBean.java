@@ -5,7 +5,7 @@
  */
 package beans;
 
-import daos.VacanciesDao;
+import daos.VacancyDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,8 +23,8 @@ import models.Vacancy;
 @Named(value = "manageVacanciesBean")
 @ViewScoped
 public class ManageVacanciesBean implements Serializable{
-  private Vacancy selectedVacancy;  
-    private final VacanciesDao vacanciesDao = new VacanciesDao();
+    private Vacancy selectedVacancy;  
+    private final VacancyDao vacancyDao = new VacancyDao();
     private ArrayList<Vacancy> vacancies; 
 
     public Vacancy getSelectedVacancy() {
@@ -52,7 +52,7 @@ public class ManageVacanciesBean implements Serializable{
     @PostConstruct
     public void init(){
         try {            
-            vacancies = vacanciesDao.buildVacancies();            
+            vacancies = vacancyDao.buildVacancies();            
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,19 +64,16 @@ public class ManageVacanciesBean implements Serializable{
     }
     
     public void saveSelectedItemId(){
-        sessionBean.setSelectedItemId(selectedVacancy.getVacancyId());
+        sessionBean.setSelectedItemId(selectedVacancy.getId());
     }
     
     public void deleteSelectedVacancy(){
         try {
-            vacanciesDao.deleteVacancy(selectedVacancy.getVacancyId());
+            vacancyDao.deleteVacancy(selectedVacancy.getId());
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /**
-     * Creates a new instance of ManageVacanciesBean
-     */
   
     
 }

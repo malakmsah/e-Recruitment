@@ -13,11 +13,14 @@ import models.EventType;
  * @author Dr. Firas Al-Hawari
  * 
  */
-public class EventTypesDao extends ConnectionDao {     
+public class EventTypesDao extends ConnectionDao {  
+
+   
+    
     public ArrayList<EventType> buildEventTypes() throws Exception {
         ArrayList<EventType> list = new ArrayList<>();
         Connection conn = getConnection();
-        
+  
         try {            
             String sql = "SELECT * FROM EVENT_TYPES ORDER BY EVENT_TYPE_ID";                        
             PreparedStatement ps = conn.prepareStatement(sql);            
@@ -67,7 +70,7 @@ public class EventTypesDao extends ConnectionDao {
         eventType.setTypeId(rs.getInt("EVENT_TYPE_ID"));
         eventType.setNameAr(rs.getString("NAME_AR"));
         eventType.setNameEn(rs.getString("NAME_EN"));                    
-        
+       
         return eventType;
     }   
 }

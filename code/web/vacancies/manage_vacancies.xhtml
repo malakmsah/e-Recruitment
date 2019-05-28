@@ -16,7 +16,7 @@
                              class="dataTable"
                              value="#{manageVacanciesBean.vacancies}"                    
                              selection="#{manageVacanciesBean.selectedVacancy}"
-                             rowKey="#{vacancy.vacancyId}"                    
+                             rowKey="#{vacancy.id}"                    
                              var="vacancy"   
                              rows="2"     
                              rowsPerPageTemplate="1,2,3"
@@ -36,33 +36,27 @@
 
                     <p:column selectionMode="single" style="width:5%"/>
 
-                    <p:column headerText="#{msgs.title}"
+                    <p:column headerText="#{msgs.position}"
                               style="width:20%"
                               filterMatchMode="contains"
                               >                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.vacancyTitle:vacancy.vacancyTitle}"/>  
+                        <h:outputText value="#{langBean.isEnglish?vacancy.position:vacancy.position}"/>  
                     </p:column>
 
                     <p:column headerText="#{msgs.description}"
                               style="width:20%"
-                              filterBy="#{langBean.isEnglish?vacancy.vacancyDescription:vacancy.vacancyDescription}"
+                              filterBy="#{langBean.isEnglish?vacancy.description:vacancy.description}"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?vacancy.vacancyDescription:vacancy.vacancyDescription}">                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.vacancyDescription:vacancy.vacancyDescription}"/>  
+                              sortBy="#{langBean.isEnglish?vacancy.description:vacancy.description}">                    
+                        <h:outputText value="#{langBean.isEnglish?vacancy.description:vacancy.description}"/>  
                     </p:column>
 
-                    <p:column headerText="#{msgs.salary}"
-                              style="width:20%"
-                              filterBy="#{langBean.isEnglish?vacancy.vacancySalary:vacancy.vacancySalary}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?vacancy.vacancySalary:vacancy.vacancySalary}">                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.vacancySalary:vacancy.vacancySalary}"/>  
-                    </p:column>
+                 
 
                     <p:column headerText="#{msgs.date}"
                               style="width:15%"
-                              sortBy="#{vacancy.date}">                    
-                        <h:outputText value="#{vacancy.date}"/>  
+                              sortBy="#{vacancy.createdAt}">                    
+                        <h:outputText value="#{vacancy.createdAt}"/>  
                     </p:column>
 
                     <f:facet name="footer">
@@ -74,7 +68,7 @@
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{manageVacanciesBean.selectedVacancy==null}"
-                                                 onclick="return confirm('#{msgs.confirm_delete_event}?');"
+                                                 onclick="return confirm('#{msgs.confirm_delete_vacancy}?');"
                                                  actionListener="#{manageVacanciesBean.deleteSelectedVacancy()}"
                                                  action="manage_vacancies" />
                                 <p:commandButton value="#{msgs.edit}"

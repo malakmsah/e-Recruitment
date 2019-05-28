@@ -16,7 +16,8 @@ import models.EventType;
  * @author Dr. Firas Al-Hawari
  * 
  */
-public class EventsDao extends ConnectionDao {     
+public class EventsDao extends ConnectionDao {  
+
     public ArrayList<Event> buildEvents(HashMap<Integer, EventType> eventTypes) 
             throws Exception {
         ArrayList<Event> list = new ArrayList<>();        

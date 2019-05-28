@@ -5,70 +5,58 @@
  */
 package models;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  *
  * @author User
  */
-public class Vacancy {
-
-    private int vacancyId;
-    private String vacancyTitle;
-    private String vacancyDescription;
-    private double vacancySalary;
-        private Timestamp date;
-
-    public Timestamp getDate() {
-        return date;
-    }
+public class Vacancy implements Serializable {
+    private int id;
+    private String position;
+    private String description;
+    private Timestamp created_at;
 
     public Vacancy() {
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public Vacancy(int id, String position, String description, Timestamp date) {
+        this.id = id;
+        this.position = position;
+        this.description = description;
+        this.created_at = date;
     }
 
-    public Vacancy(int vacancyId, String vacancyTitle, String vacancyDescription, double vacancySalary, Timestamp date) {
-        this.vacancyId = vacancyId;
-        this.vacancyTitle = vacancyTitle;
-        this.vacancyDescription = vacancyDescription;
-        this.vacancySalary = vacancySalary;
-        this.date = date;
-    }
-    
-
-    public int getVacancyId() {
-        return vacancyId;
+    public int getId() {
+        return id;
     }
 
-    public void setVacancyId(int vacancyId) {
-        this.vacancyId = vacancyId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getVacancyTitle() {
-        return vacancyTitle;
+    public String getPosition() {
+        return position;
     }
 
-    public void setVacancyTitle(String vacancyTitle) {
-        this.vacancyTitle = vacancyTitle;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getVacancyDescription() {
-        return vacancyDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setVacancyDescription(String vacancyDescription) {
-        this.vacancyDescription = vacancyDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public double getVacancySalary() {
-        return vacancySalary;
+    public Timestamp getCreatedAt() {
+        return created_at;
     }
 
-    public void setVacancySalary(double vacancySalary) {
-        this.vacancySalary = vacancySalary;
+    public void setCreatedAt(Timestamp created_at) {
+        this.created_at = created_at;
     }
-
 }

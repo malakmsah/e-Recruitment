@@ -16,56 +16,34 @@
 
                 <p:panel header="#{msgs.vacancy_info}"                            
                          style="min-height:400px; 
-                                direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+                         direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                     <h:panelGrid id="add"
                                  style="float: #{langBean.styleFloat};" 
                                  columns="3"                              
                                  dir="#{langBean.dir}">
-                        <p:outputLabel value="#{msgs.vacancy_title}:" for="vacancy_title"/>
-                        <p:inputText id="vacancy_title"
+                        <p:outputLabel value="#{msgs.position}:" for="vacancy_position"/>
+                        <p:inputText id="vacancy_position"
                                      style="width:400px"
-                                     value="#{addEditVacancyBean.vacancyTitle}"                                      
+                                     value="#{addEditVacancyBean.position}"                                      
                                      required="true"
                                      maxlength="512"
+                                     dir="ltr"
                                      requiredMessage="#{msgs.required_msg}">
                         </p:inputText>
-                        <h:message for="vacancy_title" styleClass="errorMsg"/>
+                        <h:message for="vacancy_position" styleClass="errorMsg"/>
 
                         <p:outputLabel value="#{msgs.vacancy_description}:" for="vacancy_desc"/>
                         <p:inputTextarea id="vacancy_desc"
-                                     value="#{addEditVacancyBean.vacancyDescription}"
-                                     style="width:600px"
-                                     dir="rtl"
-                                     required="true"
-                                     requiredMessage=" #{msgs.required_msg}">
+                                         value="#{addEditVacancyBean.description}"
+                                         style="width:600px"
+                                         dir="ltr"
+                                         required="true"
+                                         requiredMessage=" #{msgs.required_msg}">
                         </p:inputTextarea>
                         <h:message for="vacancy_desc" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.salary}:" for="vacancy_salary"/>
-                        <p:inputNumber id="vacancy_salary" value="#{addEditVacancyBean.vacancySalary}" minValue="0.0" maxValue="10000"
-                                            style="width:600px"
-                                     dir="rtl"
-                                     required="true"
-                                     requiredMessage=" #{msgs.required_msg}"
-                                       
-                                       />
-                        <h:message for="vacancy_salary" styleClass="errorMsg"/>                    
 
-                        
-                                   <p:outputLabel value="#{msgs.date}:" for="date"/>
-                        <p:calendar id="date"
-                                    value="#{addEditVacancyBean.date}"
-                                    dir="ltr"
-                                    pattern="yyyy-MM-dd" 
-                                    required="true"
-                                    navigator="true"
-                                    yearRange="c-10:c+1"
-                                    timeInput="true"
-                                    requiredMessage=" #{msgs.required_msg}">   
-                        </p:calendar>
 
-                        <h:message for="date" styleClass="errorMsg"/> 
-                                            
                     </h:panelGrid>
                 </p:panel>
 

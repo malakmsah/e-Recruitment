@@ -8,6 +8,7 @@ package models;
 import java.io.Serializable;
 
 /**
+<<<<<<< HEAD
  * @author MalakMSAH
  */
 public class DegreeType implements Serializable {
@@ -15,6 +16,16 @@ public class DegreeType implements Serializable {
     private String nameEn;
     private String nameAr;
 
+=======
+ *
+ * @author MalakMSAH
+ */
+public class DegreeType implements Serializable{
+    private int id;
+    private String nameEn;
+    private String nameAr;
+    
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
     public int getId() {
         return id;
     }
@@ -22,8 +33,13 @@ public class DegreeType implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public String getNameEn() {
+=======
+    
+      public String getNameEn() {
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
         return nameEn;
     }
 

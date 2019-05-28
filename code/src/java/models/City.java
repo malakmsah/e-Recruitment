@@ -1,15 +1,23 @@
+<<<<<<< HEAD
 package models;
 
+=======
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD
 
+=======
+package models;
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
 
 import java.io.Serializable;
 
 /**
+<<<<<<< HEAD
  * @author MalakMSAH
  */
 public class City implements Serializable {
@@ -17,6 +25,16 @@ public class City implements Serializable {
     private String name_en;
     private String name_ar;
 
+=======
+ *
+ * @author MalakMSAH
+ */
+public class City  implements Serializable{
+    private int id;
+    private String name_en;
+    private String name_ar;
+    
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
     public int getId() {
         return id;
     }
@@ -24,8 +42,13 @@ public class City implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public String getNameEn() {
+=======
+    
+      public String getNameEn() {
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
         return name_en;
     }
 

@@ -5,6 +5,7 @@
  */
 package models;
 
+<<<<<<< HEAD
 
 import java.io.Serializable;
 
@@ -16,6 +17,19 @@ public class Country implements Serializable {
     private String name_en;
     private String name_ar;
 
+=======
+import java.io.Serializable;
+
+/**
+ *
+ * @author MalakMSAH
+ */
+public class Country  implements Serializable{
+    private int id;
+    private String name_en;
+    private String name_ar;
+    
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
     public int getId() {
         return id;
     }
@@ -23,8 +37,13 @@ public class Country implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public String getNameEn() {
+=======
+    
+      public String getNameEn() {
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
         return name_en;
     }
 

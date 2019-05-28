@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 
 
 public class Interest implements Serializable {
@@ -13,6 +14,19 @@ public class Interest implements Serializable {
     private String name_en;
     private String name_ar;
 
+=======
+import java.sql.Timestamp;
+
+/**
+ *
+ * @author MalakMSAH
+ */
+public class Interest  implements Serializable{
+    private int id;
+    private String name_en;
+    private String name_ar;
+    
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
     public int getId() {
         return id;
     }
@@ -20,6 +34,7 @@ public class Interest implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public String getName_en() {
         return name_en;
@@ -38,5 +53,23 @@ public class Interest implements Serializable {
     }
 
   
+=======
+    
+      public String getNameEn() {
+        return name_en;
+    }
+
+    public void setNameEn(String name_en) {
+        this.name_en = name_en;
+    }
+
+    public String getNameAr() {
+        return name_ar;
+    }
+
+    public void setNameAr(String name_ar) {
+        this.name_ar = name_ar;
+    }
+>>>>>>> 4e644f63237d28a4fca96e473923ab8a5d2c78f4
 }
 

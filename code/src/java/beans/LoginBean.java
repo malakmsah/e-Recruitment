@@ -70,7 +70,8 @@ private Connection connection;
             
             Seeker seeker = seekerDao.getSeekerByNameAndPassword(username,password);
             id=seeker.getId();
-            if(seeker==null){
+            
+            if(seeker.getId()==0 ){
                 success =false;
             }
         } catch (Exception e) {
@@ -80,7 +81,7 @@ private Connection connection;
         }
         
         if (success) {
-            navigate("/vacancies/browse_vacancies");
+            navigate("edit");
         }
        
     }

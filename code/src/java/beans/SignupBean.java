@@ -198,6 +198,6 @@ public class SignupBean implements Serializable {
             Logger.getLogger(SignupBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        sessionBean.navigate("index");
+        sessionBean.navigate("edit");
     }
 }

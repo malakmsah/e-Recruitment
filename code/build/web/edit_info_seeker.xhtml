@@ -15,10 +15,10 @@
     </h:head>
 
     <h:body>
-        <ui:decorate template="/app_templates/app_template.xhtml">
+        <ui:decorate template="/app_templates/aftersignup_template.xhtml">
+                <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
 
             <h:form id="form1">
-                <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
                     <p:messages id="messages" />
 
                     <h:panelGrid columns="3" cellpadding="5">
@@ -145,12 +145,16 @@
 
                     <p:commandButton id="update_info" value="Update" style="width:110px; height:30px; margin-top:25px; background-color: #428BCA;" 
                                      ajax="false"
-                                     action="browse_vacancies"/>
+                                     styleClass="commandButton"
+                                        
+                                     action="#{seekerEditInfoBean.updateInfo()}"
+                                     />
 
-                </p:panel>
-
+              
 
             </h:form>
+            
+              </p:panel>
 
 
 

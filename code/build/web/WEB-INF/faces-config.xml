@@ -2,9 +2,16 @@
 <faces-config version="2.2"
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<<<<<<< HEAD
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <application>        
+=======
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    
+    <application>
+>>>>>>> c6ebe46831fa4fe999678ab0a60d867987166468
         <locale-config>
             <default-locale>en</default-locale>
             <supported-locale>ar</supported-locale>
@@ -12,6 +19,13 @@
         <resource-bundle>
             <base-name>messages.msgs</base-name>
             <var>msgs</var>
+<<<<<<< HEAD
         </resource-bundle>          
     </application>
+=======
+        </resource-bundle>
+        
+    </application>
+
+>>>>>>> c6ebe46831fa4fe999678ab0a60d867987166468
 </faces-config>

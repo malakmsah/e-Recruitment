@@ -27,9 +27,15 @@ public class ConnectionDao implements Serializable {
 
         if (!useConnectionPool) {
             //oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
-            oracleUrl = "jdbc:oracle:thin:@192.168.120.213:1521:xe";
-            databaseUsername = "STD_SRVCS";
-            databasePassword = "CE471_second_2017";
+            oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+            databaseUsername = "Ammar";
+            databasePassword = "Abcd12345";
+            
+            
+             // Online DB
+//            oracleUrl = "gjujobs.cjqn4frndabf.eu-west-2.rds.amazonaws.com";
+//            databaseUsername = "gjobs";
+//            databasePassword = "gjobs12345";
         }
 
         FacesContext context = FacesContext.getCurrentInstance();
@@ -68,7 +74,7 @@ public class ConnectionDao implements Serializable {
 
         if (sessionBean != null) {
             if (useConnectionPool) {
-                dataSource = (DataSource) new InitialContext().lookup("jdbc/student_services");
+                dataSource = (DataSource) new InitialContext().lookup("jdbc/test");
                 connection = dataSource.getConnection();
             } else {
                 Class.forName(oracleDriver).newInstance();

@@ -1,18 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package beans;
 
-import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 
 /**
  *
- * @author Dr. Firas Al-Hawari
- * 
+ * @author User
  */
 @Named(value = "langBean")
 @SessionScoped
-public class LangBean implements Serializable {   
-    private String locale;
+public class LangBean implements Serializable {
+
+  private String locale;
     private String lang;    
     private String dir;    
     private String styleFloat;
@@ -93,4 +98,5 @@ public class LangBean implements Serializable {
             linkLabel = "انجليزي";
         }
     }
+    
 }

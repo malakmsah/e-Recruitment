@@ -45,7 +45,7 @@ public class AddEditEventBean implements Serializable{
     public void init(){                
         try {
             eventId = sessionBean.getSelectedItemId();
-            //eventTypes = eventTypesDao.buildEventTypes();
+            eventTypes = eventTypesDao.buildEventTypes();
             
             if(eventId > 0){
                 Event event = eventsDao.getEvent(eventId);                
@@ -125,7 +125,6 @@ public class AddEditEventBean implements Serializable{
     public void saveEvent() {
         try {
             Event event = new Event();
-            
             EventType eventType = eventTypes.get(eventTypeId - 1);
             event.setEventId(eventId);
             event.setType(eventType);

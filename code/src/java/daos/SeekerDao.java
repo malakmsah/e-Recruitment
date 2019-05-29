@@ -130,7 +130,7 @@ public class SeekerDao extends ConnectionDao{
             Connection conn = getConnection();
 
             String sql = "UPDATE JOB_SEEKER SET FIRST_NAME=?,"
-                    + " LAST_NAME=?,"
+                    + " LAST_NAME=?"
                     + " BIRTH_DATE=?"
                     + " GENDER=?"
                       + " EMAIL=?"
@@ -138,16 +138,17 @@ public class SeekerDao extends ConnectionDao{
                       + " USERNAME=?"
                       + " PASSWORD=?"
                     + " CREATED_AT=?"
-                    + " WHERE ID=?";
+                    + " WHERE JOB_SEEKER.ID=?";
+            
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setString(1, seeker.getUsername());
+            ps.setString(1, seeker.getFirstname());
             ps.setString(2, seeker.getLastname());
             ps.setTimestamp(3, seeker.getBirthdate());
-                 if(seeker.getGender().equals("Male"))
+//                 if(seeker.getGender().equals("Male"))
               ps.setInt(4, 1);
-             else
-               ps.setInt(4, 0);
+//             else
+//               ps.setInt(4, 0);
             ps.setString(5, seeker.getEmail());
             ps.setInt(6, seeker.getPhone());
             ps.setString(7, seeker.getUsername());

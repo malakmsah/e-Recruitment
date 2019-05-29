@@ -125,7 +125,6 @@ public class AddEditEventBean implements Serializable{
     public void saveEvent() {
         try {
             Event event = new Event();
-            
             EventType eventType = eventTypes.get(eventTypeId - 1);
             event.setEventId(eventId);
             event.setType(eventType);

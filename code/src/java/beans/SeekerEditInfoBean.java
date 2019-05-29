@@ -9,6 +9,7 @@ import daos.EducationDao;
 import daos.InterestDao;
 import daos.SeekerDao;
 import java.io.Serializable;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -38,25 +39,25 @@ public class SeekerEditInfoBean implements Serializable {
     private String interest;
     private String education;
 
-    private Timestamp fromDate;
-    private Timestamp toDate;
+    private Date fromDate;
+    private Date toDate;
 
     private String company;
     private String position;
 
-    public Timestamp getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Timestamp fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Timestamp getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(Timestamp toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 
@@ -86,7 +87,7 @@ public class SeekerEditInfoBean implements Serializable {
     private final SeekerDao seekerDao = new SeekerDao();
 
     private ArrayList<String> genders = new ArrayList<>();
-
+     
     @Inject
     private LoginBean loginBean;
 
@@ -95,8 +96,10 @@ public class SeekerEditInfoBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        try {
+           genders.add("Male");
+            genders.add("Female");
 
+        try {
             id = loginBean.getId();
             interests = interestDao.getAll();
             educations = educationDao.getAll();
@@ -106,8 +109,7 @@ public class SeekerEditInfoBean implements Serializable {
             for (int i = 0; i < educations.size(); i++) {
                 educationsMajors.add(educations.get(i).getMajor());
             }
-            genders.add(new String("Male"));
-            genders.add(new String("Female"));
+          
         } catch (Exception ex) {
             Logger.getLogger(SeekerEditInfoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -266,6 +268,7 @@ public class SeekerEditInfoBean implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(SeekerEditInfoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+        loginBean.navigate("welcome");
     }
 
 }

@@ -56,10 +56,10 @@ public class VacancyDao extends ConnectionDao {
     private Vacancy populateVacancy(ResultSet rs) throws SQLException {
         Vacancy vacancy = new Vacancy();
 
-        vacancy.setId(rs.getInt("id"));
+        vacancy.setVacancyId(rs.getInt("ID"));
         vacancy.setPosition(rs.getString("POSITION"));
         vacancy.setDescription(rs.getString("DESCRIPTION"));
-        vacancy.setCreatedAt(rs.getTimestamp("CREATED_AT"));
+        vacancy.setCreated_at(rs.getTimestamp("CREATED_AT"));
         return vacancy;
     }
 
@@ -83,7 +83,7 @@ public class VacancyDao extends ConnectionDao {
 
             ps.setString(1, vacancy.getPosition());
             ps.setString(2, vacancy.getDescription());
-            ps.setTimestamp(3, vacancy.getCreatedAt());
+            ps.setTimestamp(3, vacancy.getCreated_at());
 //            ps.setInt(4, 5);
 
             ps.executeUpdate();
@@ -125,13 +125,13 @@ public class VacancyDao extends ConnectionDao {
             String sql = "UPDATE VACANCY SET POSITION=?,"
                     + " DESCRIPTION=?,"
                     + " CREATED_AT=?"
-                    + " WHERE id=?";
+                    + " WHERE ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, vacancy.getPosition());
             ps.setString(2, vacancy.getDescription());
-            ps.setTimestamp(3, vacancy.getCreatedAt());
-            ps.setInt(4, vacancy.getId());
+            ps.setTimestamp(3, vacancy.getCreated_at());
+            ps.setInt(4, vacancy.getVacancyId());
 
             ps.executeUpdate();
 
@@ -145,7 +145,7 @@ public class VacancyDao extends ConnectionDao {
         Connection conn = getConnection();
 
         try {
-            String sql = "DELETE FROM VACANCY WHERE id=?";
+            String sql = "DELETE FROM VACANCY WHERE ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -162,7 +162,7 @@ public class VacancyDao extends ConnectionDao {
             Vacancy vacancy = null;
             Connection conn = getConnection();
 
-            String sql = "SELECT POSITION,DESCRIPTION,CREATED_AT FROM VACANCY WHERE id=?";
+            String sql = "SELECT * FROM VACANCY WHERE ID =?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

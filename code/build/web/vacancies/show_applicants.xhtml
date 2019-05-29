@@ -7,50 +7,40 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.browse_vacancies}</title>
+        <title>#{msgs.show_applicants}</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="browse_vacancies_form">               
-                <p:dataTable id="browse_vacancies_tbl"
+            <h:form id="show_applicants_form">               
+                <p:dataTable id="show_applicants_tbl"
                              class="dataTable"
-                             value="#{browseVacanciesBean.vacancies}"                    
-                             selection="#{browseVacanciesBean.selectedVacancy}"
-                             rowKey="#{vacancy.vacancyId}"                    
-                             var="vacancy"   
+                             value="#{showApplicantsBean.applicants}"  
+                              selection="#{showApplicantsBean.selectedApplicant}"
+                             rowKey="#{applicant.}"            
+                             var="applicant"   
                              rows="10"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
-                             emptyMessage="#{msgs.no_vacancies}"
+                             emptyMessage="#{msgs.no_applicants}"
                              paginator="true"
                              paginatorPosition="top" 
                              paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":browse_vacancies_form:browse_vacancies_tbl"/>
+                            update=":manage_vacancies_form:manage_vacancies_tbl"/>
 
                     <f:facet name="header" id="header">
-                        #{msgs.vacancies}
+                        #{msgs.applicants}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
 
-                    <p:column headerText="#{msgs.position}"
+                    <p:column headerText="#{msgs.name}"
                               style="width:20%"
-                              filterBy="#{langBean.isEnglish?vacancy.position:vacancy.position}"
                               filterMatchMode="contains"
                               >                    
                         <h:outputText value="#{langBean.isEnglish?vacancy.position:vacancy.position}"/>  
-                    </p:column>
-
-                 
-
-                    <p:column headerText="#{msgs.vacancy_creation_date}"
-                              style="width:20%"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?vacancy.created_at:vacancy.created_at}">                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.created_at:vacancy.created_at}"/>  
                     </p:column>
 
                   
@@ -58,21 +48,29 @@
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="#{msgs.view}"
-                                                 icon="ui-icon-minus"                                  
+                               
+                             
+                                
+                                <p:commandButton value="#{msgs.back}"
+                                                 icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{browseVacanciesBean.selectedVacancy==null}"
-                                                 actionListener="#{browseVacanciesBean.saveSelectedItemId()}"
-                                                 action="show_vacancies" />
-                      
+                                                 disabled="#{manageVacanciesBean.selectedVacancy==null}"                                                 
+                                                 actionListener="#{manageVacanciesBean.saveSelectedItemId()}"
+                                                 action="manage_vacancies" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
  
-                   
+                <p:commandButton value="#{msgs.add}"
+                                 icon="ui-icon-plus"                                  
+                                 iconPos="#{langBean.styleFloat}"
+                                 styleClass="commandButton"
+                                 style="float:#{langBean.styleFloat}" 
+                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
+                                 action="add_edit_vacancy" />                
             </h:form>
         </ui:decorate>
     </h:body>

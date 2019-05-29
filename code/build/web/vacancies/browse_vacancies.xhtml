@@ -16,7 +16,7 @@
                              class="dataTable"
                              value="#{browseVacanciesBean.vacancies}"                    
                              selection="#{browseVacanciesBean.selectedVacancy}"
-                             rowKey="#{vacancy.id}"                    
+                             rowKey="#{vacancy.vacancyId}"                    
                              var="vacancy"   
                              rows="10"     
                              rowsPerPageTemplate="1,2,3"
@@ -49,8 +49,8 @@
                     <p:column headerText="#{msgs.vacancy_creation_date}"
                               style="width:20%"
                               filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?vacancy.createdAt:vacancy.createdAt}">                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.createdAt:vacancy.createdAt}"/>  
+                              sortBy="#{langBean.isEnglish?vacancy.created_at:vacancy.created_at}">                    
+                        <h:outputText value="#{langBean.isEnglish?vacancy.created_at:vacancy.created_at}"/>  
                     </p:column>
 
                   
@@ -64,7 +64,7 @@
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{browseVacanciesBean.selectedVacancy==null}"
-                                                 actionListener="#{browseVacanciesBean.showSelectedVacancy()}"
+                                                 actionListener="#{browseVacanciesBean.saveSelectedItemId()}"
                                                  action="show_vacancies" />
                       
                             </p:toolbarGroup>

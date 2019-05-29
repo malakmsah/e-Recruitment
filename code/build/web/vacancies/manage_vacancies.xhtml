@@ -16,9 +16,9 @@
                              class="dataTable"
                              value="#{manageVacanciesBean.vacancies}"                    
                              selection="#{manageVacanciesBean.selectedVacancy}"
-                             rowKey="#{vacancy.id}"                    
+                             rowKey="#{vacancy.vacancyId}"                    
                              var="vacancy"   
-                             rows="2"     
+                             rows="10"     
                              rowsPerPageTemplate="1,2,3"
                              dir="#{langBean.dir}"
                              emptyMessage="#{msgs.no_vacancies}"
@@ -55,8 +55,8 @@
 
                     <p:column headerText="#{msgs.date}"
                               style="width:15%"
-                              sortBy="#{vacancy.createdAt}">                    
-                        <h:outputText value="#{vacancy.createdAt}"/>  
+                              sortBy="#{vacancy.created_at}">                    
+                        <h:outputText value="#{vacancy.created_at}"/>  
                     </p:column>
 
                     <f:facet name="footer">
@@ -72,6 +72,16 @@
                                                  actionListener="#{manageVacanciesBean.deleteSelectedVacancy()}"
                                                  action="manage_vacancies" />
                                 <p:commandButton value="#{msgs.edit}"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 disabled="#{manageVacanciesBean.selectedVacancy==null}"                                                 
+                                                 actionListener="#{manageVacanciesBean.saveSelectedItemId()}"
+                                                 action="show_applicants" />
+                                
+                                
+                                  <p:commandButton value="#{msgs.view}"
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"

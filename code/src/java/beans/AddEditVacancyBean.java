@@ -80,7 +80,7 @@ public class AddEditVacancyBean implements Serializable {
                 Vacancy vacancy = vacancyDao.getVacancy(id);
                 position = vacancy.getPosition();
                 description = vacancy.getDescription();
-                created_at = vacancy.getCreatedAt();
+                created_at = vacancy.getCreated_at();
             }
           
         } catch (Exception ex) {
@@ -92,10 +92,10 @@ public class AddEditVacancyBean implements Serializable {
         try {
             Vacancy vacancy = new Vacancy();
 
-            vacancy.setId(id);
+            vacancy.setVacancyId(id);
             vacancy.setPosition(position);
             vacancy.setDescription(description);
-            vacancy.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+            vacancy.setCreated_at(new Timestamp(System.currentTimeMillis()));
             
             if (sessionBean.getSelectedItemId() > 0) {
                 vacancyDao.updateVacancy(vacancy);

@@ -26,7 +26,7 @@ public class RecruiterDao extends ConnectionDao {
         int maxId = 0;
         try {
             Connection conn = getConnection();
-            String sql = "((select max(ID) MAX_ID from RECRUITERS) +1) ";
+            String sql = "(nvl(select max(ID) MAX_ID from RECRUITERS)+1, 1)  ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

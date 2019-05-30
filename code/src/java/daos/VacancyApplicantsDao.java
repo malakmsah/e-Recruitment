@@ -36,27 +36,25 @@ public class VacancyApplicantsDao extends ConnectionDao {
 
     
     
-      public ArrayList<Integer> getAllApplicants() throws Exception {
+      public ArrayList<VacancyApplicants> getAllApplicants(int vacancyId) throws Exception {
         ArrayList<VacancyApplicants> list = new ArrayList<>();
-        ArrayList<Integer> listt=new ArrayList<>();
         Connection conn = getConnection();
 
         try {
             String sql = "SELECT * FROM VACANCY_APPLICANTS  WHERE VACANCY_ID =?";
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, vacancyId);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 list.add(papulate(rs));
                 
             }
-       for(int i =0;i<list.size();i++){
-    listt.add(list.get(i).getJobSeekerId());
-           }
+     
             rs.close();
             ps.close();
 
-            return listt;
+            return list;
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
@@ -91,7 +89,8 @@ public class VacancyApplicantsDao extends ConnectionDao {
 
         vacancyApplicants.setVacancyId(rs.getInt("VACANCY_ID"));
         vacancyApplicants.setJobSeekerId(rs.getInt("JS_ID"));
-        return null;
+        vacancyApplicants.setCreatedAt(rs.getTimestamp("CREATED_AT"));
+        return vacancyApplicants;
     }
 
     public List<VacancyApplicants> getAll() throws Exception {

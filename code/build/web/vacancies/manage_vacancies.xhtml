@@ -66,6 +66,7 @@
                                                  icon="ui-icon-minus"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
+                                                ajax="false"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{manageVacanciesBean.selectedVacancy==null}"
                                                  onclick="return confirm('#{msgs.confirm_delete_vacancy}?');"
@@ -78,7 +79,7 @@
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{manageVacanciesBean.selectedVacancy==null}"                                                 
                                                  actionListener="#{manageVacanciesBean.saveSelectedItemId()}"
-                                                 action="show_applicants" />
+                                                 action="add_edit_vacancy" />
                                 
                                 
                                   <p:commandButton value="#{msgs.view}"
@@ -88,7 +89,7 @@
                                                  style="float:#{langBean.styleFloat}"                                                                                                
                                                  disabled="#{manageVacanciesBean.selectedVacancy==null}"                                                 
                                                  actionListener="#{manageVacanciesBean.saveSelectedItemId()}"
-                                                 action="add_edit_vacancy" />
+                                                 action="show_applicants" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>

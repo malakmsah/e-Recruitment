@@ -14,9 +14,9 @@
             <h:form id="show_applicants_form">               
                 <p:dataTable id="show_applicants_tbl"
                              class="dataTable"
-                             value="#{showApplicantsBean.applicants}"  
+                             value="#{showApplicantsBean.seekers}"  
                               selection="#{showApplicantsBean.selectedApplicant}"
-                             rowKey="#{applicant.}"            
+                              rowKey="#{applicant.id}"            
                              var="applicant"   
                              rows="10"     
                              rowsPerPageTemplate="1,2,3"
@@ -28,7 +28,7 @@
                              >
 
                     <p:ajax event="rowSelectRadio"
-                            update=":manage_vacancies_form:manage_vacancies_tbl"/>
+                            update=":show_applicants_form:show_applicants_tbl"/>
 
                     <f:facet name="header" id="header">
                         #{msgs.applicants}
@@ -40,7 +40,7 @@
                               style="width:20%"
                               filterMatchMode="contains"
                               >                    
-                        <h:outputText value="#{langBean.isEnglish?vacancy.position:vacancy.position}"/>  
+                        <h:outputText value="#{langBean.isEnglish?applicant.firstname:applicant.firstname}"/>  
                     </p:column>
 
                   
@@ -55,22 +55,14 @@
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 disabled="#{manageVacanciesBean.selectedVacancy==null}"                                                 
-                                                 actionListener="#{manageVacanciesBean.saveSelectedItemId()}"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                                                        
                                                  action="manage_vacancies" />
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
  
-                <p:commandButton value="#{msgs.add}"
-                                 icon="ui-icon-plus"                                  
-                                 iconPos="#{langBean.styleFloat}"
-                                 styleClass="commandButton"
-                                 style="float:#{langBean.styleFloat}" 
-                                 actionListener="#{sessionBean.setSelectedItemId(-1)}"
-                                 action="add_edit_vacancy" />                
+                       
             </h:form>
         </ui:decorate>
     </h:body>

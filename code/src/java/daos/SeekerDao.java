@@ -182,7 +182,7 @@ public class SeekerDao extends ConnectionDao{
             Seeker seeker = null;
             Connection conn = getConnection();
               
-            String sql = "SELECT FIRST_NAME,LAST_NAME,BIRTH_DATE,GENDER,EMAIL,PHONE,USERNAME,PASSWORD,CREATED_AT FROM JOB_SEEKER WHERE ID=?";
+            String sql = "SELECT * FROM JOB_SEEKER WHERE ID=?";
                                       
             PreparedStatement ps = conn.prepareStatement(sql);            
             ps.setInt(1, seekerId);

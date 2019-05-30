@@ -5,14 +5,13 @@ package models;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.io.Serializable;
 
 /**
  * @author MalakMSAH
  */
 public class City implements Serializable {
+
     private int id;
     private String name_en;
     private String name_ar;

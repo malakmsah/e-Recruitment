@@ -11,37 +11,36 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import models.Vacancy;
 
-
 @Named(value = "browseVacanciesBean")
 @ViewScoped
-public class BrowseVacanciesBean implements Serializable{
+public class BrowseVacanciesBean implements Serializable {
 
-    private Vacancy selectedVacancy;    
+    private Vacancy selectedVacancy;
     private final VacancyDao vacancyDao = new VacancyDao();
-    private ArrayList<Vacancy> vacancies; 
-    
-    @Inject 
+    private ArrayList<Vacancy> vacancies;
+
+    @Inject
     private SessionBean sessionBean;
-    
+
     public BrowseVacanciesBean() {
     }
-    
+
     @PostConstruct
-    public void init(){
-        try {            
+    public void init() {
+        try {
             vacancies = vacancyDao.buildVacancies();
         } catch (Exception ex) {
             Logger.getLogger(BrowseVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Vacancy getSelectedVacancy() {
         return selectedVacancy;
     }
 
     public void setSelectedVacancy(Vacancy selectedVacancy) {
         this.selectedVacancy = selectedVacancy;
-    }  
+    }
 
     public ArrayList<Vacancy> getVacancies() {
         return vacancies;
@@ -49,13 +48,13 @@ public class BrowseVacanciesBean implements Serializable{
 
     public void setVacancies(ArrayList<Vacancy> vacancies) {
         this.vacancies = vacancies;
-    }   
-    
-    public void searchVacancies(){        
     }
-    
-    public void saveSelectedItemId(){
+
+    public void searchVacancies() {
+    }
+
+    public void saveSelectedItemId() {
         sessionBean.setSelectedItemId(selectedVacancy.getVacancyId());
-    }    
-    
+    }
+
 }

@@ -43,14 +43,14 @@ public class RecruiterVacancyDao extends ConnectionDao {
     }
 
     public int get(int vacancyId) throws Exception {
-        RecruiterVacancy recruiterVacancy =new RecruiterVacancy();
+        RecruiterVacancy recruiterVacancy = new RecruiterVacancy();
         Connection conn = getConnection();
 
         try {
             String sql = "SELECT * FROM RECRUITER_VACANCY WHERE VACANCY_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, vacancyId);
-            ResultSet rs = ps.executeQuery();           
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 recruiterVacancy = papulate(rs);
@@ -58,8 +58,8 @@ public class RecruiterVacancyDao extends ConnectionDao {
 
             rs.close();
             ps.close();
-            
-            return recruiterVacancy.getRecruiterId();     
+
+            return recruiterVacancy.getRecruiterId();
 
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());

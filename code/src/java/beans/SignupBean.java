@@ -35,7 +35,7 @@ public class SignupBean implements Serializable {
     private Timestamp birthdate;
     private String gender;
     private Timestamp created_at;
-   private ArrayList<String> genders = new ArrayList<>();
+    private ArrayList<String> genders = new ArrayList<>();
     private final SeekerDao seekerDao = new SeekerDao();
 
     public ArrayList<String> getGenders() {
@@ -61,10 +61,10 @@ public class SignupBean implements Serializable {
 //                password = "";
 //                created_at = new Timestamp(time);
 //                gender = "";
-                
-            genders.add(new String("Male") );
-            genders.add(new String("Female") );                
-                 
+
+        genders.add(new String("Male"));
+        genders.add(new String("Female"));
+
     }
 //    @PostConstruct
 //    public void init() {
@@ -192,7 +192,7 @@ public class SignupBean implements Serializable {
             seeker.setEmail(email);
             seeker.setBirthdate(birthdate);
             seeker.setCreated_at(created_at);
-            seeker.setGender(gender); 
+            seeker.setGender(gender);
             seekerDao.insertSeeker(seeker);
         } catch (Exception ex) {
             Logger.getLogger(SignupBean.class.getName()).log(Level.SEVERE, null, ex);

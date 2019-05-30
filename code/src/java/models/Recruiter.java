@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  * @author MalakMSAH
  */
 public class Recruiter implements Serializable {
+
     private int id;
     private String name_ar;
     private String name_en;

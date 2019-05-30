@@ -14,9 +14,9 @@
 
     <h:body>
         <ui:decorate template="/app_templates/aftersignup_template.xhtml">
-                <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
+            <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
 
-            <h:form id="form1">
+                <h:form id="form1">
                     <p:messages id="messages" />
 
                     <h:panelGrid columns="3" cellpadding="5">
@@ -130,10 +130,10 @@
 
                         </p:inputText>
                         <p:message for="contact" />
-                        
-                        
-                            <p:outputLabel for="gender" value="#{msgs.gender}" />
-                            <p:selectOneMenu id="gender" value="#{seekerEditInfoBean.gender}" style="width:125px">
+
+
+                        <p:outputLabel for="gender" value="#{msgs.gender}" />
+                        <p:selectOneMenu id="gender" value="#{seekerEditInfoBean.gender}" style="width:125px">
                             <f:selectItem itemLabel="Select One" itemValue="" />
                             <f:selectItems value="#{seekerEditInfoBean.genders}" />
                         </p:selectOneMenu>
@@ -147,11 +147,11 @@
                                      action="#{seekerEditInfoBean.updateInfo()}"
                                      />
 
-              
 
-            </h:form>
-            
-              </p:panel>
+
+                </h:form>
+
+            </p:panel>
 
 
 

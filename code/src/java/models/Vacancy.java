@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  * @author User
  */
 public class Vacancy implements Serializable {
+
     private int vacancyId;
     private String position;
     private String description;
@@ -53,5 +54,4 @@ public class Vacancy implements Serializable {
     public Vacancy() {
     }
 
-   
 }

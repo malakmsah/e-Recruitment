@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class CityDao extends ConnectionDao {
 
-
     /**
      * @param id
      * @return
@@ -73,6 +72,5 @@ public class CityDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-
 
 }

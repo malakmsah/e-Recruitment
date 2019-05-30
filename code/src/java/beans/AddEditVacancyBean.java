@@ -16,6 +16,7 @@ import javax.inject.Named;
 
 import javax.inject.Inject;
 import models.Vacancy;
+
 /**
  *
  * @author User
@@ -24,7 +25,7 @@ import models.Vacancy;
 @ViewScoped
 public class AddEditVacancyBean implements Serializable {
 
-     private int id;
+    private int id;
     private String position;
     private String description;
     private Timestamp created_at;
@@ -60,9 +61,8 @@ public class AddEditVacancyBean implements Serializable {
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
-    
-    private final VacancyDao vacancyDao = new VacancyDao();
 
+    private final VacancyDao vacancyDao = new VacancyDao();
 
     @Inject
     private SessionBean sessionBean;
@@ -82,7 +82,7 @@ public class AddEditVacancyBean implements Serializable {
                 description = vacancy.getDescription();
                 created_at = vacancy.getCreated_at();
             }
-          
+
         } catch (Exception ex) {
             Logger.getLogger(AddEditVacancyBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,7 +96,7 @@ public class AddEditVacancyBean implements Serializable {
             vacancy.setPosition(position);
             vacancy.setDescription(description);
             vacancy.setCreated_at(new Timestamp(System.currentTimeMillis()));
-            
+
             if (sessionBean.getSelectedItemId() > 0) {
                 vacancyDao.updateVacancy(vacancy);
             } else {

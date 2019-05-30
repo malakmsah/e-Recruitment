@@ -17,11 +17,11 @@ import models.Seeker;
  */
 @Named(value = "showApplicantsBean")
 @ViewScoped
-public class ShowApplicantsBean implements Serializable{
-    
+public class ShowApplicantsBean implements Serializable {
+
     private ArrayList<Seeker> applicants = new ArrayList<>();
-     
+
     public ShowApplicantsBean() {
     }
-    
+
 }

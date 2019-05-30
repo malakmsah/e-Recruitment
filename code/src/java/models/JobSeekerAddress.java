@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author MalakMSAH
  */
 public class JobSeekerAddress implements Serializable {
+
     private int js_id;
     private int country_id;
     private int city_id;

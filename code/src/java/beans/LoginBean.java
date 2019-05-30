@@ -21,8 +21,9 @@ import models.Seeker;
 @Named(value = "loginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
-private String username;
-private int id;
+
+    private String username;
+    private int id;
 
     public int getId() {
         return id;
@@ -31,15 +32,15 @@ private int id;
     public void setId(int id) {
         this.id = id;
     }
-private String password;
-private Connection connection;
-   
-   private final SeekerDao seekerDao = new SeekerDao();
+    private String password;
+    private Connection connection;
+
+    private final SeekerDao seekerDao = new SeekerDao();
 
     public Connection getConnection() {
         return connection;
     }
-    
+
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
@@ -59,6 +60,7 @@ private Connection connection;
     public void setPassword(String password) {
         this.password = password;
     }
+
     public LoginBean() {
     }
 
@@ -67,23 +69,23 @@ private Connection connection;
         boolean success = true;
 
         try {
-            
-            Seeker seeker = seekerDao.getSeekerByNameAndPassword(username,password);
-            id=seeker.getId();
-            
-            if(seeker.getId()==0 ){
-                success =false;
+
+            Seeker seeker = seekerDao.getSeekerByNameAndPassword(username, password);
+            id = seeker.getId();
+
+            if (seeker.getId() == 0) {
+                success = false;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
 
         }
-        
+
         if (success) {
             navigate("edit");
         }
-       
+
     }
 
     public void logout() throws Exception {
@@ -108,7 +110,7 @@ private Connection connection;
             facesContext.getExternalContext().invalidateSession();
         }
     }
-    
+
     public void navigate(String url) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
 

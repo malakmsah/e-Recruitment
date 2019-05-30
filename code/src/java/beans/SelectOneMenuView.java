@@ -119,53 +119,49 @@ public class SelectOneMenuView implements Serializable {
         this.cities = cities;
     }
 
+    private String field;
+    private ArrayList<String> fields;
 
-   private String field; 
-        private ArrayList<String> fields;
- 
-    private String position;  
+    private String position;
     private ArrayList<String> positions;
-     
-    private String experience;  
+
+    private String experience;
     private ArrayList<String> experiences = new ArrayList<>();
-    private String salary;  
+    private String salary;
     private ArrayList<String> salaries;
-   
-        private String duration;  
+
+    private String duration;
     private ArrayList<String> durations;
-    
-       private String city;  
+
+    private String city;
     private ArrayList<String> cities;
+
     @PostConstruct
     public void init() {
-       fields = new ArrayList<String>();
-       fields.add("Web Developer");
+        fields = new ArrayList<String>();
+        fields.add("Web Developer");
         fields.add("Mobile Developer");
-         
-          positions = new ArrayList<String>();
-       positions.add("Senior");
+
+        positions = new ArrayList<String>();
+        positions.add("Senior");
         positions.add("Jenior");
-        
-                  experiences = new ArrayList<String>();
-       experiences.add("More Than 1 Year");
+
+        experiences = new ArrayList<String>();
+        experiences.add("More Than 1 Year");
         experiences.add("More Than 2 Years");
-        
-     salaries  = new ArrayList<String>();
-           salaries.add("About 500$");
-        salaries.add("About 800$");  
-        
-       durations =   new ArrayList<String>();
-       durations.add("Full Time");
-              durations.add("Part Time");
 
-                     cities =   new ArrayList<String>();
-       cities.add("Amman");
-              cities.add("Zarqa");
-              
-       
+        salaries = new ArrayList<String>();
+        salaries.add("About 500$");
+        salaries.add("About 800$");
+
+        durations = new ArrayList<String>();
+        durations.add("Full Time");
+        durations.add("Part Time");
+
+        cities = new ArrayList<String>();
+        cities.add("Amman");
+        cities.add("Zarqa");
+
     }
- 
-    
+
 }
-
-

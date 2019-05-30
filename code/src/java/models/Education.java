@@ -9,11 +9,11 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-
 /**
  * @author MalakMSAH
  */
 public class Education implements Serializable {
+
     private int id;
     private String institution;
     private String major;
@@ -21,7 +21,6 @@ public class Education implements Serializable {
     private Date end_date;
     private float gpa;
     private Timestamp created_at;
-
 
     public int getId() {
         return id;

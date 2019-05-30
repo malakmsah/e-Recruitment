@@ -35,7 +35,6 @@ public class RecruiterAddressDao extends ConnectionDao {
             ps.setString(6, address.getBuildingOfficeDetails());
 //            ps.setTimestamp(7, new Timestamp(address.getCreatedAt().getTime()));
 
-
             ps.executeUpdate();
 
             ps.close();
@@ -48,8 +47,8 @@ public class RecruiterAddressDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE RECRUITER_ADDRESSS SET " +
-                    "COUNTRY_ID=?,"
+            String sql = "UPDATE RECRUITER_ADDRESSS SET "
+                    + "COUNTRY_ID=?,"
                     + " CITY_ID=?,"
                     + " NEIGHBOURHOOD=?,"
                     + " STREET=?,"
@@ -103,6 +102,5 @@ public class RecruiterAddressDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-
 
 }

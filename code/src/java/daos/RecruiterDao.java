@@ -84,8 +84,8 @@ public class RecruiterDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "UPDATE RECRUITERS SET " +
-                    "NAME_AR=?,"
+            String sql = "UPDATE RECRUITERS SET "
+                    + "NAME_AR=?,"
                     + " NAME_EN=?,"
                     + " USERNAME=?,"
                     + " PASSWORD=?,"
@@ -110,7 +110,6 @@ public class RecruiterDao extends ConnectionDao {
 
             ps.close();
 
-
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
@@ -118,7 +117,7 @@ public class RecruiterDao extends ConnectionDao {
 
     public Recruiter getRecruiter(int id) throws Exception {
         try {
-            Recruiter recruiter= new Recruiter();
+            Recruiter recruiter = new Recruiter();
             Connection conn = getConnection();
 
             String sql = "SELECT *  FROM RECRUITER  WHERE  ID=?";
@@ -148,5 +147,5 @@ public class RecruiterDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
-    
+
 }

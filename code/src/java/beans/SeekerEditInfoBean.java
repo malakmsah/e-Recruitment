@@ -87,7 +87,7 @@ public class SeekerEditInfoBean implements Serializable {
     private final SeekerDao seekerDao = new SeekerDao();
 
     private ArrayList<String> genders = new ArrayList<>();
-     
+
     @Inject
     private LoginBean loginBean;
 
@@ -96,8 +96,8 @@ public class SeekerEditInfoBean implements Serializable {
 
     @PostConstruct
     public void init() {
-           genders.add("Male");
-            genders.add("Female");
+        genders.add("Male");
+        genders.add("Female");
 
         try {
             id = loginBean.getId();
@@ -109,7 +109,7 @@ public class SeekerEditInfoBean implements Serializable {
             for (int i = 0; i < educations.size(); i++) {
                 educationsMajors.add(educations.get(i).getMajor());
             }
-          
+
         } catch (Exception ex) {
             Logger.getLogger(SeekerEditInfoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -253,7 +253,7 @@ public class SeekerEditInfoBean implements Serializable {
 
     public void updateInfo() {
         try {
-            
+
             Seeker seeker = new Seeker();
             seeker.setFirstname(firstname);
             seeker.setLastname(lastname);
@@ -271,7 +271,6 @@ public class SeekerEditInfoBean implements Serializable {
         }
 
         //loginBean.navigate("afteredit");
-
         loginBean.navigate("welcome");
     }
 

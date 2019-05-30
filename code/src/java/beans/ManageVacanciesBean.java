@@ -22,10 +22,11 @@ import models.Vacancy;
  */
 @Named(value = "manageVacanciesBean")
 @ViewScoped
-public class ManageVacanciesBean implements Serializable{
-    private Vacancy selectedVacancy;  
+public class ManageVacanciesBean implements Serializable {
+
+    private Vacancy selectedVacancy;
     private final VacancyDao vacancyDao = new VacancyDao();
-    private ArrayList<Vacancy> vacancies; 
+    private ArrayList<Vacancy> vacancies;
 
     public Vacancy getSelectedVacancy() {
         return selectedVacancy;
@@ -42,38 +43,35 @@ public class ManageVacanciesBean implements Serializable{
     public void setVacancies(ArrayList<Vacancy> vacancies) {
         this.vacancies = vacancies;
     }
-    
-    @Inject 
+
+    @Inject
     private SessionBean sessionBean;
-    
-      public ManageVacanciesBean() {
+
+    public ManageVacanciesBean() {
     }
-   
+
     @PostConstruct
-    public void init(){
-        try {            
-            vacancies = vacancyDao.buildVacancies();            
+    public void init() {
+        try {
+            vacancies = vacancyDao.buildVacancies();
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-   
-    
-    public void searchVacancies(){        
+    public void searchVacancies() {
     }
-    
-    public void saveSelectedItemId(){
+
+    public void saveSelectedItemId() {
         sessionBean.setSelectedItemId(selectedVacancy.getVacancyId());
     }
-    
-    public void deleteSelectedVacancy(){
+
+    public void deleteSelectedVacancy() {
         try {
             vacancyDao.deleteVacancy(selectedVacancy.getVacancyId());
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-  
-    
+
 }

@@ -12,6 +12,7 @@ import java.sql.Timestamp;
  * @author MalakMSAH
  */
 public class VacancyApplicants implements Serializable {
+
     private int js_id;
     private int vacancy_id;
     private Timestamp created_at;

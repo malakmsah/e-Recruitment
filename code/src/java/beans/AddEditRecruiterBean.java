@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 @ViewScoped
 public class AddEditRecruiterBean implements Serializable {
 
-
     private final RecruiterDao recruiterDao = new RecruiterDao();
     private final RecruiterAddressDao recruiterAddressDao = new RecruiterAddressDao();
     private final CountryDao countryDao = new CountryDao();
@@ -50,7 +49,6 @@ public class AddEditRecruiterBean implements Serializable {
             countries = countryDao.getAllCountry();
             cities = cityDao.getAllCity();
 
-
             if (sessionBean.getRecruiterId() != 0) {
                 recruiter = recruiterDao.getRecruiter(sessionBean.getRecruiterId());
                 if (recruiter == null) {
@@ -66,7 +64,6 @@ public class AddEditRecruiterBean implements Serializable {
             e.printStackTrace();
         }
 
-
     }
 
     public void saveEvent() {
@@ -74,7 +71,6 @@ public class AddEditRecruiterBean implements Serializable {
             if (recruiter.getId() > 0) {
                 recruiterDao.updateRecruiter(recruiter);
                 recruiterAddressDao.updateRecruiterAddress(address);
-
 
             } else {
                 int id = recruiterDao.insertRecruiter(recruiter);
@@ -143,5 +139,5 @@ public class AddEditRecruiterBean implements Serializable {
     public void setSessionBean(beans.SessionBean sessionBean) {
         this.sessionBean = sessionBean;
     }
-    
+
 }

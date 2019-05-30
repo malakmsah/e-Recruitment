@@ -34,11 +34,9 @@ public class VacancyApplicantsDao extends ConnectionDao {
         }
     }
 
-    
-    
-      public ArrayList<Integer> getAllApplicants() throws Exception {
+    public ArrayList<Integer> getAllApplicants() throws Exception {
         ArrayList<VacancyApplicants> list = new ArrayList<>();
-        ArrayList<Integer> listt=new ArrayList<>();
+        ArrayList<Integer> listt = new ArrayList<>();
         Connection conn = getConnection();
 
         try {
@@ -48,11 +46,11 @@ public class VacancyApplicantsDao extends ConnectionDao {
 
             while (rs.next()) {
                 list.add(papulate(rs));
-                
+
             }
-       for(int i =0;i<list.size();i++){
-    listt.add(list.get(i).getJobSeekerId());
-           }
+            for (int i = 0; i < list.size(); i++) {
+                listt.add(list.get(i).getJobSeekerId());
+            }
             rs.close();
             ps.close();
 
@@ -62,7 +60,6 @@ public class VacancyApplicantsDao extends ConnectionDao {
         }
     }
 
-    
     public void insertVacancyApplicant(VacancyApplicants vacancyApplicants) throws Exception {
         try {
             Connection conn = getConnection();
@@ -85,6 +82,7 @@ public class VacancyApplicantsDao extends ConnectionDao {
             throw new SQLException(e.getMessage());
         }
     }
+
     private VacancyApplicants papulate(ResultSet rs) throws SQLException {
 
         VacancyApplicants vacancyApplicants = new VacancyApplicants();

@@ -5,20 +5,22 @@ import java.io.Serializable;
 /**
  *
  * @author Firas.Alhawari
- * 
+ *
  */
-public class EventType implements Serializable{
+public class EventType implements Serializable {
+
     private int typeId;
     private String nameEn;
     private String nameAr;
 
-    public EventType(){}
-    
+    public EventType() {
+    }
+
     public EventType(int typeId, String nameEn, String nameAr) {
         this.typeId = typeId;
         this.nameEn = nameEn;
         this.nameAr = nameAr;
-    }        
+    }
 
     public int getTypeId() {
         return typeId;
@@ -42,5 +44,5 @@ public class EventType implements Serializable{
 
     public void setNameAr(String nameAr) {
         this.nameAr = nameAr;
-    }            
+    }
 }

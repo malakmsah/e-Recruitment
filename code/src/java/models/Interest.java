@@ -7,8 +7,8 @@ package models;
 
 import java.io.Serializable;
 
-
 public class Interest implements Serializable {
+
     private int id;
     private String name_en;
     private String name_ar;
@@ -37,6 +37,4 @@ public class Interest implements Serializable {
         this.name_ar = name_ar;
     }
 
-  
 }
-

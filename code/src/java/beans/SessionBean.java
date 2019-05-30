@@ -7,16 +7,16 @@ import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
+
     private String username;
     private String password;
     private Connection connection;
     private int selectedItemId;
     private int menuIndex = 0;
-      private int recruiterId = 0;
+    private int recruiterId = 0;
 
     public int getRecruiterId() {
         return recruiterId;
@@ -25,6 +25,7 @@ public class SessionBean implements Serializable {
     public void setRecruiterId(int recruiterId) {
         this.recruiterId = recruiterId;
     }
+
     public SessionBean() {
     }
 
@@ -68,7 +69,6 @@ public class SessionBean implements Serializable {
         this.menuIndex = menuIndex;
     }
 
-   
     public void navigate(String url) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
 

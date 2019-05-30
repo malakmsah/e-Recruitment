@@ -13,6 +13,7 @@ import java.sql.Timestamp;
  * @author MalakMSAH
  */
 public class Experience implements Serializable {
+
     private int id;
     private String position;
     private String company;

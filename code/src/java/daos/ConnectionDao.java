@@ -14,14 +14,15 @@ import javax.sql.DataSource;
  *
  */
 public class ConnectionDao implements Serializable {
+
     private DataSource dataSource;
     private String oracleUrl;
     private String databaseUsername;
     private String databasePassword;
-    private final String oracleDriver;    
+    private final String oracleDriver;
     private final boolean useConnectionPool = false;
     private final SessionBean sessionBean;
-    
+
     public ConnectionDao() {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
@@ -30,9 +31,8 @@ public class ConnectionDao implements Serializable {
             oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
             databaseUsername = "OMAR";
             databasePassword = "12345";
-            
-            
-             // Online DB
+
+            // Online DB
 //            oracleUrl = "gjujobs.cjqn4frndabf.eu-west-2.rds.amazonaws.com";
 //            databaseUsername = "gjobs";
 //            databasePassword = "gjobs12345";
@@ -40,7 +40,7 @@ public class ConnectionDao implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         sessionBean = (SessionBean) context.getELContext().getELResolver().getValue(
-                                         context.getELContext(), null, "sessionBean");
+                context.getELContext(), null, "sessionBean");
     }
 
     public Connection getConnection() throws Exception {
@@ -51,7 +51,7 @@ public class ConnectionDao implements Serializable {
 
             if (connection == null || connection.isClosed()) {
                 connection = openSessionConnection();
-                sessionBean.setConnection(connection);                
+                sessionBean.setConnection(connection);
             }
         }
 
@@ -78,10 +78,10 @@ public class ConnectionDao implements Serializable {
                 connection = dataSource.getConnection();
             } else {
                 Class.forName(oracleDriver).newInstance();
-                connection = DriverManager.getConnection(oracleUrl,databaseUsername,databasePassword);
+                connection = DriverManager.getConnection(oracleUrl, databaseUsername, databasePassword);
             }
         }
 
         return connection;
-    }   
+    }
 }

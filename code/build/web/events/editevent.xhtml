@@ -6,161 +6,161 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-                >
-      
+      >
 
 
-   <h:head>
 
-</h:head>
-   
-<h:body>
-	 <ui:decorate template="/app_templates/aftersignup_template.xhtml">
+    <h:head>
 
-	<h:form id="form1">
-            
-            
-               
-    <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
-        <p:messages id="messages" />
-        
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel value="#{msgs.firstname}" for="firstname" />
-          <p:inputText id="firstname" required="true" label="firstname"
-		size="40" requiredMessage="Please enter your first name."
-                value="#{editBean.firstname}">
-	  </p:inputText>
-	  <p:message for="firstname" />
-         
-          
-          <p:outputLabel value="#{msgs.lastname}" for="lastname" />
-          <p:inputText id="lastname" required="true" label="last name"
-		size="40" requiredMessage="Please enter your last name."
-                value="#{editBean.lastname}">
-	  </p:inputText>
-	  <p:message for="lastname" />
-          
-          
-     
-           <p:outputLabel value="#{msgs.username}" for="username" />
-           <p:inputText id="username" required="true" label="username"
-		size="40" requiredMessage="Please enter your user name."
-                value="#{editBean.username}">
-	  </p:inputText>
-	  <p:message for="username" />
-          
-          
-          <p:outputLabel value="#{msgs.email}" for="email" />
-          <p:inputText id="email" required="true" label="email"
-		size="44" requiredMessage="Please enter your email."
-                value="#{editBean.email}">
-	  </p:inputText>
-	  <p:message for="email" />
-          
-          
-          <p:outputLabel value="#{msgs.password}" for="password" />
-          <p:password id="password" required="true" label="password" size="40"
-		requiredMessage="Please enter your password."
-                match="confirmPassword" value="#{editBean.password}"
-		maxlength="40">
-	  </p:password>
-		
-	  <p:message for="password" />
-           
-                
-          <p:outputLabel value="#{msgs.confirmpassword}" for="password" />
-	  <p:password id="confirmPassword" required="true" size="44"
-		requiredMessage="Please confirm your password."
-                label="confirmPassword" value="#{editBean.confirmpassword}"
-		maxlength="20">
-	  </p:password>
-	  <p:message for="confirmPassword" />
-          
-          <p:outputLabel value="#{msgs.myDate}" for="myDate" />
-          <p:calendar size="46" value="#{editBean.date}" id="myDate" locale="it">
-            <f:convertDateTime pattern="dd/MM/yyyy" />
-           </p:calendar>
-	  <p:message for="myDate" />
-          
-          
-          <p:outputLabel for="interests" value="#{msgs.interests}" />
-          <p:selectOneMenu id="interests" value="#{editBean.interest}" style="width:100%">
-                
-                <f:selectItem itemLabel="Select Interest" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{msgs.selectinterests}" />
-            </p:selectOneMenu>
-           <p:message for="interests" />
-          
-           <p:outputLabel for="education" value="#{msgs.education}" />
-           <p:selectOneMenu id="education" value="#{editBean.education}" style="width:100%">
-                
-                <f:selectItem itemLabel="Education Field" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{msgs.educationfield}" />
-            </p:selectOneMenu>
-           <p:message for="education" />
-           
-           <p:outputLabel for="experience" value="#{msgs.experience}" />
-           <p:selectOneMenu id="experience" value="#{editBean.experience}" style="width:100%">
-                
-                <f:selectItem itemLabel="Experience Field" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{msgs.experiencefield}" />
-            </p:selectOneMenu>
-           <p:message for="experience" />
-           
-           
-          <p:outputLabel value="#{msgs.myDate1}" for="myDate" />
-          <p:calendar size="46" value="#{editBean.date1}"  id="myDate1" locale="it">
-            <f:convertDateTime pattern="dd/MM/yyyy" />
-           </p:calendar>
-	  <p:message for="myDate1" />
-          
-          <p:outputLabel value="#{msgs.myDate2}" for="myDate" />
-          <p:calendar size="46" value="#{editBean.date2}"  id="myDate2" locale="it">
-            <f:convertDateTime pattern="dd/MM/yyyy" />
-           </p:calendar>
-	  <p:message for="myDate2" />
-          
-          <p:outputLabel for="position" value="#{msgs.position}" />
-          <p:selectOneMenu id="position" value="#{editBean.position}" style="width:100%">
-                
-                <f:selectItem itemLabel="Your Position" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{msgs.positionplace}" />
-            </p:selectOneMenu>
-           <p:message for="position" />
-           
-           <p:outputLabel value="#{msgs.company}" for="company" />
-          <p:inputText id="company" required="true" label="company"
-		size="44" requiredMessage="Please enter your email."
-                value="#{editBean.company}">
-	  </p:inputText>
-	  <p:message for="company" />
-          
-          
-          <p:outputLabel value="#{msgs.contact}" for="contact" />
-          <p:inputText id="contact" required="true" label="contact"
-		size="40" requiredMessage=" Please Specify in which field your experience."
-                value="#{editBean.phone}">
-	  </p:inputText>
-	  <p:watermark for="contact" value="Add your number start with 00962 *" />
-	  <p:message for="experience" />
- 
-        </h:panelGrid>
- 
-        <p:commandButton id="saveBtn" value="Save" style="width:110px; height:30px; margin-top:25px; background-color: #428BCA;" 
-                                           ajax="false"
-                                          
-                                           action="/afteredit?faces-redirect=true"/>
-        
-    </p:panel>
-            
-         
-          </h:form>
-          
+    </h:head>
 
-	
-          
+    <h:body>
+        <ui:decorate template="/app_templates/aftersignup_template.xhtml">
 
-	 
-</ui:decorate>
-</h:body>
-    </html>
+            <h:form id="form1">
+
+
+
+                <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel value="#{msgs.firstname}" for="firstname" />
+                        <p:inputText id="firstname" required="true" label="firstname"
+                                     size="40" requiredMessage="Please enter your first name."
+                                     value="#{editBean.firstname}">
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+
+                        <p:outputLabel value="#{msgs.lastname}" for="lastname" />
+                        <p:inputText id="lastname" required="true" label="last name"
+                                     size="40" requiredMessage="Please enter your last name."
+                                     value="#{editBean.lastname}">
+                        </p:inputText>
+                        <p:message for="lastname" />
+
+
+
+                        <p:outputLabel value="#{msgs.username}" for="username" />
+                        <p:inputText id="username" required="true" label="username"
+                                     size="40" requiredMessage="Please enter your user name."
+                                     value="#{editBean.username}">
+                        </p:inputText>
+                        <p:message for="username" />
+
+
+                        <p:outputLabel value="#{msgs.email}" for="email" />
+                        <p:inputText id="email" required="true" label="email"
+                                     size="44" requiredMessage="Please enter your email."
+                                     value="#{editBean.email}">
+                        </p:inputText>
+                        <p:message for="email" />
+
+
+                        <p:outputLabel value="#{msgs.password}" for="password" />
+                        <p:password id="password" required="true" label="password" size="40"
+                                    requiredMessage="Please enter your password."
+                                    match="confirmPassword" value="#{editBean.password}"
+                                    maxlength="40">
+                        </p:password>
+
+                        <p:message for="password" />
+
+
+                        <p:outputLabel value="#{msgs.confirmpassword}" for="password" />
+                        <p:password id="confirmPassword" required="true" size="44"
+                                    requiredMessage="Please confirm your password."
+                                    label="confirmPassword" value="#{editBean.confirmpassword}"
+                                    maxlength="20">
+                        </p:password>
+                        <p:message for="confirmPassword" />
+
+                        <p:outputLabel value="#{msgs.myDate}" for="myDate" />
+                        <p:calendar size="46" value="#{editBean.date}" id="myDate" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="myDate" />
+
+
+                        <p:outputLabel for="interests" value="#{msgs.interests}" />
+                        <p:selectOneMenu id="interests" value="#{editBean.interest}" style="width:100%">
+
+                            <f:selectItem itemLabel="Select Interest" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{msgs.selectinterests}" />
+                        </p:selectOneMenu>
+                        <p:message for="interests" />
+
+                        <p:outputLabel for="education" value="#{msgs.education}" />
+                        <p:selectOneMenu id="education" value="#{editBean.education}" style="width:100%">
+
+                            <f:selectItem itemLabel="Education Field" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{msgs.educationfield}" />
+                        </p:selectOneMenu>
+                        <p:message for="education" />
+
+                        <p:outputLabel for="experience" value="#{msgs.experience}" />
+                        <p:selectOneMenu id="experience" value="#{editBean.experience}" style="width:100%">
+
+                            <f:selectItem itemLabel="Experience Field" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{msgs.experiencefield}" />
+                        </p:selectOneMenu>
+                        <p:message for="experience" />
+
+
+                        <p:outputLabel value="#{msgs.myDate1}" for="myDate" />
+                        <p:calendar size="46" value="#{editBean.date1}"  id="myDate1" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="myDate1" />
+
+                        <p:outputLabel value="#{msgs.myDate2}" for="myDate" />
+                        <p:calendar size="46" value="#{editBean.date2}"  id="myDate2" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="myDate2" />
+
+                        <p:outputLabel for="position" value="#{msgs.position}" />
+                        <p:selectOneMenu id="position" value="#{editBean.position}" style="width:100%">
+
+                            <f:selectItem itemLabel="Your Position" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{msgs.positionplace}" />
+                        </p:selectOneMenu>
+                        <p:message for="position" />
+
+                        <p:outputLabel value="#{msgs.company}" for="company" />
+                        <p:inputText id="company" required="true" label="company"
+                                     size="44" requiredMessage="Please enter your email."
+                                     value="#{editBean.company}">
+                        </p:inputText>
+                        <p:message for="company" />
+
+
+                        <p:outputLabel value="#{msgs.contact}" for="contact" />
+                        <p:inputText id="contact" required="true" label="contact"
+                                     size="40" requiredMessage=" Please Specify in which field your experience."
+                                     value="#{editBean.phone}">
+                        </p:inputText>
+                        <p:watermark for="contact" value="Add your number start with 00962 *" />
+                        <p:message for="experience" />
+
+                    </h:panelGrid>
+
+                    <p:commandButton id="saveBtn" value="Save" style="width:110px; height:30px; margin-top:25px; background-color: #428BCA;" 
+                                     ajax="false"
+
+                                     action="/afteredit?faces-redirect=true"/>
+
+                </p:panel>
+
+
+            </h:form>
+
+
+
+
+
+
+        </ui:decorate>
+    </h:body>
+</html>

@@ -12,7 +12,8 @@ import java.sql.Timestamp;
  *
  * @author User
  */
-public class Seeker implements Serializable{
+public class Seeker implements Serializable {
+
     private int id;
     private String firstname;
     private String lastname;
@@ -103,6 +104,5 @@ public class Seeker implements Serializable{
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
-
 
 }

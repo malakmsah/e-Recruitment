@@ -131,7 +131,7 @@ public class ShowVacancyBean implements Serializable {
             vacancyApplicants.setVacancyId(id);
             vacancyApplicants.setJobSeekerId(seekerId);
             vacancyApplicants.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-            
+
             vacancyApplicantsDao.insertVacancyApplicant(vacancyApplicants);
 
         } catch (Exception ex) {

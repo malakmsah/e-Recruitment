@@ -15,7 +15,7 @@
                 <p:dataTable id="show_applicants_tbl"
                              class="dataTable"
                              value="#{showApplicantsBean.applicants}"  
-                              selection="#{showApplicantsBean.selectedApplicant}"
+                             selection="#{showApplicantsBean.selectedApplicant}"
                              rowKey="#{applicant.}"            
                              var="applicant"   
                              rows="10"     
@@ -43,14 +43,14 @@
                         <h:outputText value="#{langBean.isEnglish?vacancy.position:vacancy.position}"/>  
                     </p:column>
 
-                  
+
 
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                               
-                             
-                                
+
+
+
                                 <p:commandButton value="#{msgs.back}"
                                                  icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
@@ -63,7 +63,7 @@
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
- 
+
                 <p:commandButton value="#{msgs.add}"
                                  icon="ui-icon-plus"                                  
                                  iconPos="#{langBean.styleFloat}"

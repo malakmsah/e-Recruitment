@@ -12,6 +12,7 @@ import java.sql.Timestamp;
  * @author MalakMSAH
  */
 public class RecruiterAddress implements Serializable {
+
     private int recruiter_id;
     private int country_id;
     private int city_id;

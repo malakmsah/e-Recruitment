@@ -18,11 +18,12 @@ import models.EventType;
 /**
  *
  * @author Firas.Alhawari
- * 
+ *
  */
 @Named(value = "addEditEventBean")
 @ViewScoped
-public class AddEditEventBean implements Serializable{
+public class AddEditEventBean implements Serializable {
+
     private ArrayList<EventType> eventTypes;
     private final EventTypesDao eventTypesDao = new EventTypesDao();
     private final EventsDao eventsDao = new EventsDao();
@@ -33,22 +34,22 @@ public class AddEditEventBean implements Serializable{
     private String placeEn;
     private String placeAr;
     private int capacity;
-    private Date date;   
-    
+    private Date date;
+
     @Inject
     private SessionBean sessionBean;
-    
-    public AddEditEventBean() {        
+
+    public AddEditEventBean() {
     }
-    
+
     @PostConstruct
-    public void init(){                
+    public void init() {
         try {
             eventId = sessionBean.getSelectedItemId();
             eventTypes = eventTypesDao.buildEventTypes();
-            
-            if(eventId > 0){
-                Event event = eventsDao.getEvent(eventId);                
+
+            if (eventId > 0) {
+                Event event = eventsDao.getEvent(eventId);
                 nameEn = event.getNameEn();
                 nameAr = event.getNameAr();
                 placeEn = event.getPlaceEn();
@@ -64,7 +65,7 @@ public class AddEditEventBean implements Serializable{
 
     public ArrayList<EventType> getEventTypes() {
         return eventTypes;
-    }        
+    }
 
     public int getEventTypeId() {
         return eventTypeId;
@@ -120,8 +121,8 @@ public class AddEditEventBean implements Serializable{
 
     public void setDate(Date date) {
         this.date = date;
-    }        
-        
+    }
+
     public void saveEvent() {
         try {
             Event event = new Event();
@@ -134,7 +135,7 @@ public class AddEditEventBean implements Serializable{
             event.setPlaceAr(placeAr);
             event.setCapacity(capacity);
             event.setDate(new Timestamp(date.getTime()));
-            
+
             if (sessionBean.getSelectedItemId() > 0) {
                 eventsDao.updateEvent(event);
             } else {

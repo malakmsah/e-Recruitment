@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author MalakMSAH
  */
 public class DegreeType implements Serializable {
+
     private int id;
     private String nameEn;
     private String nameAr;

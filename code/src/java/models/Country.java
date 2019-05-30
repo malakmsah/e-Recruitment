@@ -5,13 +5,13 @@
  */
 package models;
 
-
 import java.io.Serializable;
 
 /**
  * @author MalakMSAH
  */
 public class Country implements Serializable {
+
     private int id;
     private String name_en;
     private String name_ar;

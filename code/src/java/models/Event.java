@@ -6,9 +6,10 @@ import java.sql.Timestamp;
 /**
  *
  * @author Firas.Alhawari
- * 
+ *
  */
-public class Event implements Serializable{
+public class Event implements Serializable {
+
     private int eventId;
     private String nameEn;
     private String nameAr;
@@ -25,7 +26,7 @@ public class Event implements Serializable{
     public void setEventId(int eventId) {
         this.eventId = eventId;
     }
-    
+
     public String getNameEn() {
         return nameEn;
     }
@@ -48,7 +49,7 @@ public class Event implements Serializable{
 
     public void setType(EventType type) {
         this.type = type;
-    }   
+    }
 
     public int getCapacity() {
         return capacity;
@@ -80,5 +81,5 @@ public class Event implements Serializable{
 
     public void setDate(Timestamp date) {
         this.date = date;
-    }            
+    }
 }

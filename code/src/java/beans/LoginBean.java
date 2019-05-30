@@ -81,7 +81,7 @@ private Connection connection;
         }
         
         if (success) {
-            navigate("/vacancies/browse_vacancies");
+            navigate("edit");
         }
        
     }

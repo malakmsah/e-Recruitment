@@ -28,8 +28,8 @@ public class ConnectionDao implements Serializable {
         if (!useConnectionPool) {
             //oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
             oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-            databaseUsername = "Ammar";
-            databasePassword = "Abcd12345";
+            databaseUsername = "OMAR";
+            databasePassword = "12345";
             
             
              // Online DB

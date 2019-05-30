@@ -80,34 +80,21 @@
                         <p:calendar id="date"
                                     value="#{addEditEventBean.date}"
                                     dir="ltr"
-<<<<<<< HEAD
+
                                     pattern="yyyy-MM-dd HH:mm" 
                                     navigator="true"
                                     required="true"
                                     yearRange="c-10:c+1"
                                     timeInput="true"
-                                    requiredMessage=" #{msgs.required_msg}"/> 
-=======
-                                    pattern="yyyy-MM-dd" 
-                                    required="true"
-                                    navigator="true"
-                                    yearRange="c-10:c+1"
-                                    timeInput="true"
-                                    requiredMessage=" #{msgs.required_msg}">   
-                        </p:calendar>
+                                    requiredMessage=" #{msgs.required_msg}"/>
 
->>>>>>> c6ebe46831fa4fe999678ab0a60d867987166468
                         <h:message for="date" styleClass="errorMsg"/>                                        
 
                         <p:outputLabel value="#{msgs.capacity}:" for="capacity"/>
                         <p:inputText id="capacity"
                                      value="#{addEditEventBean.capacity}"
                                      required="true"
-<<<<<<< HEAD
-                                     maxlength="10"  
-=======
-                                     maxlength="10" 
->>>>>>> c6ebe46831fa4fe999678ab0a60d867987166468
+                                     maxlength="10"
                                      converterMessage="#{msgs.capacity_msg}"
                                      validatorMessage="#{msgs.capacity_msg}"
                                      requiredMessage="#{msgs.required_msg}">

@@ -7,15 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import models.Recruiter;
 
 public class RecruiterVacancyDao extends ConnectionDao {
 
-    public RecruiterVacancy get(int recruiterId) throws Exception {
-        List<RecruiterVacancy> list = new ArrayList<>();
+    public ArrayList<RecruiterVacancy> getAllMyVacancies(int recruiterId) throws Exception {
+        ArrayList<RecruiterVacancy> list = new ArrayList<>();
         Connection conn = getConnection();
 
         try {
-            String sql = "SELECT * FROM RECRUITER_INTEREST  WHERE RECRUITER_ID ? ORDER BY VACANCY_ID";
+            String sql = "SELECT * FROM RECRUITER_VACANCY  WHERE RECRUITER_ID =?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, recruiterId);
             ResultSet rs = ps.executeQuery();
@@ -26,8 +27,7 @@ public class RecruiterVacancyDao extends ConnectionDao {
 
             rs.close();
             ps.close();
-return null;
-//            return list;
+            return list;
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
@@ -35,31 +35,32 @@ return null;
 
     private RecruiterVacancy papulate(ResultSet rs) throws SQLException {
 
-        RecruiterVacancy education = new RecruiterVacancy();
+        RecruiterVacancy recruiterVacancy = new RecruiterVacancy();
 
-        education.setRecruiterId(rs.getInt("RECRUITER_ID"));
-        education.setVacancyId(rs.getInt("VACANCY_ID"));
-        return education;
+        recruiterVacancy.setRecruiterId(rs.getInt("RECRUITER_ID"));
+        recruiterVacancy.setVacancyId(rs.getInt("VACANCY_ID"));
+        return recruiterVacancy;
     }
 
-    public List<RecruiterVacancy> getAll() throws Exception {
-        List<RecruiterVacancy> list = new ArrayList<>();
+    public int get(int vacancyId) throws Exception {
+        RecruiterVacancy recruiterVacancy =new RecruiterVacancy();
         Connection conn = getConnection();
 
         try {
-            String sql = "SELECT * FROM RECRUITER_INTEREST ORDER BY RECRUITER_ID";
+            String sql = "SELECT * FROM RECRUITER_VACANCY WHERE VACANCY_ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
+            ps.setInt(1, vacancyId);
+            ResultSet rs = ps.executeQuery();           
 
             while (rs.next()) {
-                list.add(papulate(rs));
+                recruiterVacancy = papulate(rs);
             }
 
             rs.close();
             ps.close();
+            
+            return recruiterVacancy.getRecruiterId();     
 
-            return list;
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }

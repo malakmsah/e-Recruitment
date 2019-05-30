@@ -80,13 +80,13 @@
                         <p:calendar id="date"
                                     value="#{addEditEventBean.date}"
                                     dir="ltr"
-                                    pattern="yyyy-MM-dd" 
-                                    required="true"
+
+                                    pattern="yyyy-MM-dd HH:mm" 
                                     navigator="true"
+                                    required="true"
                                     yearRange="c-10:c+1"
                                     timeInput="true"
-                                    requiredMessage=" #{msgs.required_msg}">   
-                        </p:calendar>
+                                    requiredMessage=" #{msgs.required_msg}"/>
 
                         <h:message for="date" styleClass="errorMsg"/>                                        
 
@@ -94,7 +94,7 @@
                         <p:inputText id="capacity"
                                      value="#{addEditEventBean.capacity}"
                                      required="true"
-                                     maxlength="10" 
+                                     maxlength="10"
                                      converterMessage="#{msgs.capacity_msg}"
                                      validatorMessage="#{msgs.capacity_msg}"
                                      requiredMessage="#{msgs.required_msg}">

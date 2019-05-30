@@ -14,7 +14,7 @@
             <base-name>messages.msgs</base-name>
             <var>msgs</var>
         </resource-bundle>
-        
+
     </application>
 
 </faces-config>

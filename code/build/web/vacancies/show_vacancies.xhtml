@@ -10,29 +10,25 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-     
-        
                     <p:messages id="msgs" closable="true" globalOnly="true"/>
-
+                    
                 <p:panel header="#{msgs.vacancy_info}"                            
-                         style="min-height:400px; 
+                         style="min-height:400px;  
                          direction:#{langBean.dir};margin-top:10px; font-size:10pt">
-        <p:panelGrid columns="2">
-            <f:facet name="header">
-                <p:graphicImage name="demo/images/misc/kobe.png" />
-            </f:facet>
+                    
+        <p:panelGrid   
+                       columns="2"   style="min-height:200px; background-color: #0B70BE;  
+                         width: 400px; 
+                         direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+         
+            <h:outputText value="Position :" />
+            <h:outputText value="#{showVacancyBean.position}" />
 
-            <h:outputText value="Name:" />
-            <h:outputText value="#{browseVacanciesBean.selectedVacancy.position}" />
+            <h:outputText value="Description :" />
+            <h:outputText value="#{showVacancyBean.description}" />
 
-            <h:outputText value="Team:" />
-            <h:outputText value="#{browseVacanciesBean.selectedVacancy.description}" />
-
-            <h:outputText value="Position:" />
-            <h:outputText value="Shooting Guard" />
-
-            <h:outputText value="Number:" />
-            <h:outputText value="24" />
+            <h:outputText value="Recruiter Name :" />
+            <h:outputText value="#{showVacancyBean.recruiterName}" />
         </p:panelGrid>
                 </p:panel>
                 <h:form id="apply_vacancy"> 
@@ -43,14 +39,14 @@
                                  iconPos="#{langBean.styleFloat}"
                                  ajax="false"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 actionListener="#{showVacancy.applyVacancy()}" />
+                                 actionListener="#{showVacancyBean.applyVacancy()}" />
                 <p:commandButton value="#{msgs.cancel}"
                                  icon="ui-icon-cancel"  
                                  iconPos="#{langBean.styleFloat}"
                                  styleClass="commandButton"
                                  immediate="true" 
                                  style="float:#{langBean.styleFloat}"                                 
-                                 action="manage_vacancies"  />                                   
+                                 action="browse_vacancies"  />                                   
             </h:form>
         </ui:decorate>
     </h:body>

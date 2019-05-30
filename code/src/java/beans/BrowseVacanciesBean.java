@@ -55,24 +55,7 @@ public class BrowseVacanciesBean implements Serializable{
     }
     
     public void saveSelectedItemId(){
-        sessionBean.setSelectedItemId(selectedVacancy.getId());
-    }
-    
-    public void deleteSelectedVacancy(){
-        try {
-            vacancyDao.deleteVacancy(selectedVacancy.getId());
-        } catch (Exception ex) {
-            Logger.getLogger(BrowseVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    
-       public void showSelectedVacancy(){
-        try {
-            vacancyDao.getVacancy(selectedVacancy.getId());
-        } catch (Exception ex) {
-            Logger.getLogger(BrowseVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        sessionBean.setSelectedItemId(selectedVacancy.getVacancyId());
+    }    
     
 }

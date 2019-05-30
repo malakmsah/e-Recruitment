@@ -13,27 +13,17 @@ import java.sql.Timestamp;
  * @author User
  */
 public class Vacancy implements Serializable {
-    private int id;
+    private int vacancyId;
     private String position;
     private String description;
     private Timestamp created_at;
 
-    public Vacancy() {
+    public int getVacancyId() {
+        return vacancyId;
     }
 
-    public Vacancy(int id, String position, String description, Timestamp date) {
-        this.id = id;
-        this.position = position;
-        this.description = description;
-        this.created_at = date;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setVacancyId(int vacancyId) {
+        this.vacancyId = vacancyId;
     }
 
     public String getPosition() {
@@ -52,11 +42,16 @@ public class Vacancy implements Serializable {
         this.description = description;
     }
 
-    public Timestamp getCreatedAt() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreatedAt(Timestamp created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
+
+    public Vacancy() {
+    }
+
+   
 }

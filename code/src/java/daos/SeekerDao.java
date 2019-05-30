@@ -130,6 +130,7 @@ public class SeekerDao extends ConnectionDao{
             Connection conn = getConnection();
 
             String sql = "UPDATE JOB_SEEKER SET FIRST_NAME=?,"
+
                     + " LAST_NAME=?,"
                     + " BIRTH_DATE=?,"
                     + " GENDER=?,"

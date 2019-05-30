@@ -269,7 +269,10 @@ public class SeekerEditInfoBean implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(SeekerEditInfoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        loginBean.navigate("afteredit");
+
+        //loginBean.navigate("afteredit");
+
+        loginBean.navigate("welcome");
     }
 
 }

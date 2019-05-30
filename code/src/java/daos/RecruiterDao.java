@@ -118,32 +118,32 @@ public class RecruiterDao extends ConnectionDao {
 
     public Recruiter getRecruiter(int id) throws Exception {
         try {
-            Recruiter recruiters = new Recruiter();
+            Recruiter recruiter= new Recruiter();
             Connection conn = getConnection();
 
-            String sql = "SELECT *  FROM RECRUITERS  WHERE  ID=?";
+            String sql = "SELECT *  FROM RECRUITER  WHERE  ID=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                recruiters.setId(rs.getInt("ID"));
-                recruiters.setNameAr(rs.getString("NAME_AR"));
-                recruiters.setNameEn(rs.getString("NAME_EN"));
-                recruiters.setUsername(rs.getString("USERNAME"));
-                recruiters.setPassword(rs.getString("PASSWORD"));
-                recruiters.setAbout(rs.getString("ABOUT"));
-                recruiters.setEmail(rs.getString("EMAIL"));
-                recruiters.setPhone(rs.getInt("PHONE"));
-                recruiters.setNumberOfEmployees(rs.getInt("NUMBER_OF_EMPLOYEE"));
-                recruiters.setCreatedAt(rs.getTimestamp("CREATED_AT"));
-                recruiters.setFoundedAt(rs.getDate("FOUNDED_AT"));
+                recruiter.setId(rs.getInt("ID"));
+                recruiter.setNameAr(rs.getString("NAME_AR"));
+                recruiter.setNameEn(rs.getString("NAME_EN"));
+                recruiter.setUsername(rs.getString("USERNAME"));
+                recruiter.setPassword(rs.getString("PASSWORD"));
+                recruiter.setAbout(rs.getString("ABOUT"));
+                recruiter.setEmail(rs.getString("EMAIL"));
+                recruiter.setPhone(rs.getInt("PHONE"));
+                recruiter.setNumberOfEmployees(rs.getInt("NUMBER_OF_EMPLOYEES"));
+                recruiter.setCreatedAt(rs.getTimestamp("CREATED_AT"));
+                recruiter.setFoundedAt(rs.getDate("FOUNDED_AT"));
             }
 
             rs.close();
             ps.close();
-            return recruiters;
+            return recruiter;
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }

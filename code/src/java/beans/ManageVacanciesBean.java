@@ -64,12 +64,12 @@ public class ManageVacanciesBean implements Serializable{
     }
     
     public void saveSelectedItemId(){
-        sessionBean.setSelectedItemId(selectedVacancy.getId());
+        sessionBean.setSelectedItemId(selectedVacancy.getVacancyId());
     }
     
     public void deleteSelectedVacancy(){
         try {
-            vacancyDao.deleteVacancy(selectedVacancy.getId());
+            vacancyDao.deleteVacancy(selectedVacancy.getVacancyId());
         } catch (Exception ex) {
             Logger.getLogger(ManageVacanciesBean.class.getName()).log(Level.SEVERE, null, ex);
         }

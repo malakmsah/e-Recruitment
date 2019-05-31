@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/malak/sites/e-Recruitment/code/web/jobseeker/signup.xhtml</file>
-            <file>file:/C:/Users/malak/sites/e-Recruitment/code/src/java/daos/SeekerDao.java</file>
-            <file>file:/C:/Users/malak/sites/e-Recruitment/code/src/java/beans/JsSignupBean.java</file>
+            <file>file:/C:/Users/malak/sites/e-Recruitment/code/src/java/messages/msgs.properties</file>
+            <file>file:/C:/Users/malak/sites/e-Recruitment/code/web/recruiter/signup.xhtml</file>
+            <file>file:/C:/Users/malak/sites/e-Recruitment/code/src/java/messages/msgs_ar.properties</file>
+            <file>file:/C:/Users/malak/sites/e-Recruitment/code/web/jobseeker/login.xhtml</file>
         </group>
     </open-files>
 </project-private>

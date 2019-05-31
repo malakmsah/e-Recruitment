@@ -7,14 +7,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.manage_events}</title>
+        <title>#{msgs.signup}</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/signup_template.xhtml">  
-            <h:form id="add_event">            
+            <h:form id="recruiter_signup">            
                 <p:messages id="msgs" closable="true" globalOnly="true"/>
 
-                <p:panel header="#{msgs.event_info}"                            
+                <p:panel header="#{msgs.signup}"                            
                          style="min-height:400px; 
                          direction:#{langBean.dir};margin-top:10px; font-size:10pt">
                     <h:panelGrid id="add"
@@ -22,135 +22,138 @@
                                  columns="3"                              
                                  dir="#{langBean.dir}">
 
-                        <p:outputLabel value="#{msgs.recruiters.nameAr}:" for="nameAr"/>
+                        <p:outputLabel value="#{msgs.nameAr}:" for="nameAr"/>
                         <p:inputText id="nameAr"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.nameAr}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.nameAr}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="nameAr" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.recruiters.nameAr}:" for="nameEn"/>
+                        <p:outputLabel value="#{msgs.nameAr}:" for="nameEn"/>
                         <p:inputText id="nameEn"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.nameEn}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.nameEn}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="nameEn" styleClass="errorMsg"/>
 
 
-                        <p:outputLabel value="#{msgs.recruiters.numberOfEmployee}:" for="numberOfEmployee"/>
+                        <p:outputLabel value="#{msgs.numberOfEmployees}:" for="numberOfEmployee"/>
                         <p:spinner id="numberOfEmployee"
                                    style="width:600px"
-                                   value="#{addEditRecruitersBean.recruiters.numberOfEmployee}"                                      
+                                   value="#{AddEditRecruiterBean.numberOfEmployee}"                                      
                                    required="true"
-                                   requiredMessage="#{msgs.required_msg}">
+                                   requiredMessage="#{msgs.required_field}">
                         </p:spinner>
                         <h:message for="numberOfEmployee" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.addresses.country}:" for="country"/>
-                        <p:selectOneMenu value="#{addEditRecruitersBean.addresses.country}"
+                        <p:outputLabel value="#{msgs.country}:" for="country"/>
+                        <p:selectOneMenu value="#{AddEditRecruiterBean.addresses.country}"
                                          id="country" converter="#{countryConverter}"
                                          required="true"                                                                                  
-                                         requiredMessage=" #{msgs.required_msg}">
+                                         requiredMessage=" #{msgs.required_field}">
                             <f:selectItem itemLabel="#{msgs.select_one}"         noSelectionOption="true"                              itemValue=""/>
                             <f:selectItems var="country"
-                                           value="#{addEditRecruitersBean.countries}" 
+                                           value="#{AddEditRecruiterBean.countries}" 
                                            itemLabel="#{langBean.isEnglish?country.nameEn: country.nameAr}"
                                            itemValue="#{country}"/>                             
                         </p:selectOneMenu>
                         <h:message for="country" styleClass="errorMsg"/>
 
 
-                        <p:outputLabel value="#{msgs.addresses.city}:" for="city"/>
-                        <p:selectOneMenu value="#{addEditRecruitersBean.addresses.city}"
+                        <p:outputLabel value="#{msgs.city}:" for="city"/>
+                        <p:selectOneMenu value="#{AddEditRecruiterBean.addresses.city}"
                                          id="city" converter="#{cityConverter}"
                                          required="true"                                                                                  
-                                         requiredMessage=" #{msgs.required_msg}">
+                                         requiredMessage=" #{msgs.required_field}">
                             <f:selectItem itemLabel="#{msgs.select_one}" noSelectionOption="true"
                                           itemValue=""/>
                             <f:selectItems var="city"
-                                           value="#{addEditRecruitersBean.cities}" 
+                                           value="#{AddEditRecruiterBean.cities}" 
                                            itemLabel="#{langBean.isEnglish?city.nameEn: city.nameAr}"
                                            itemValue="#{city}"/>                             
                         </p:selectOneMenu>
                         <h:message for="country" styleClass="errorMsg"/>
 
 
-                        <p:outputLabel value="#{msgs.recruiters.username}:" for="username"/>
+                        <p:outputLabel value="#{msgs.username}:" for="username"/>
                         <p:inputText id="username"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.username}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.username}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="username" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.recruiters.password}:" for="password"/>
+                        <p:outputLabel value="#{msgs.password}:" for="password"/>
                         <p:password id="password"
                                     style="width:600px"
-                                    value="#{addEditRecruitersBean.recruiters.password}"                                      
+                                    value="#{AddEditRecruiterBean.recruiter.password}"                                      
                                     required="true"
                                     maxlength="255"
-                                    requiredMessage="#{msgs.required_msg}">
+                                    requiredMessage="#{msgs.required_field}">
                         </p:password>
                         <h:message for="password" styleClass="errorMsg"/>
-                        
-                        <p:outputLabel value="#{msgs.recruiters.password}:" for="password"/>
-                        <p:password id="password" match="confPassword"
-                                    style="width:600px"
-                                    value="#{addEditRecruitersBean.recruiters.password}"                                      
+
+                        <p:outputLabel value="#{msgs.password}:" for="password"/>
+                        <p:password id="password"
+                                    maxlength="255"                                    
                                     required="true"
-                                    maxlength="255"
-                                    requiredMessage="#{msgs.required_msg}">
+                                    requiredMessage="#{msgs.required_field}"
+                                    value="#{AddEditRecruiterBean.recruiter.password}"   
+                                    style="width:600px"
+                                    match="confPassword"
+                                    >
+                            <p:watermark for="password" value="#{msgs.password}"/>  
                         </p:password>
                         <h:message for="password" styleClass="errorMsg"/>
-                        
-                         <p:outputLabel value="#{msgs.recruiters.confPassword}:" for="confPassword"/>
-                         <p:password id="confPassword" 
-                                    style="width:600px"
-                                    value="#{addEditRecruitersBean.recruiters.password}"                                      
+
+                        <p:outputLabel value="#{msgs.confirm_password}:" for="confPassword"/>
+                        <p:password id="confPassword" 
+                                    maxlength="255"                                     
                                     required="true"
-                                    maxlength="255"
-                                    requiredMessage="#{msgs.required_msg}">
+                                    requiredMessage="#{msgs.required_field}"
+                                    value="#{AddEditRecruiterBean.recruiter.password}" 
+                                    style="width:600px"
+                                    >
+                            <p:watermark for="signup_password_confirm" value="#{msgs.confirm_password}"/>   
                         </p:password>
-                        <h:message for="confPassword" styleClass="errorMsg"/>
+                        <h:message for="confPassword" styleClass="errorMsg" display="text"/>
 
-
-
-                        <p:outputLabel value="#{msgs.recruiters.phone}:" for="phone"/>
+                        <p:outputLabel value="#{msgs.phone}:" for="phone"/>
                         <p:inputText id="phone"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.phone}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.phone}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="phone" styleClass="errorMsg"/>
 
 
-                        <p:outputLabel value="#{msgs.recruiters.email}:" for="email"/>
+                        <p:outputLabel value="#{msgs.email}:" for="email"/>
                         <p:inputText id="email"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.email}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.email}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="email" styleClass="errorMsg"/>
 
-                        <p:outputLabel value="#{msgs.recruiters.email}:" for="email"/>
+                        <p:outputLabel value="#{msgs.email}:" for="email"/>
                         <p:inputText id="email"
                                      style="width:600px"
-                                     value="#{addEditRecruitersBean.recruiters.email}"                                      
+                                     value="#{AddEditRecruiterBean.recruiter.email}"                                      
                                      required="true"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_msg}">
+                                     requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="email" styleClass="errorMsg"/>
 
@@ -158,17 +161,17 @@
 
                         <p:outputLabel value="#{msgs.date}:" for="date"/>
                         <p:calendar id="date"
-                                    value="#{addEditRecruitersBean.recruiters.foundedAt}"
+                                    value="#{AddEditRecruiterBean.recruiter.foundedAt}"
                                     dir="ltr"
                                     pattern="yyyy-MM-dd HH:mm" 
                                     navigator="true"
                                     required="true"
                                     yearRange="c-10:c+1"
                                     timeInput="true"
-                                    requiredMessage=" #{msgs.required_msg}"/> 
+                                    requiredMessage=" #{msgs.required_field}"/> 
                         <h:message for="date" styleClass="errorMsg"/>                                        
 
-                        
+
                     </h:panelGrid>
                 </p:panel>
 
@@ -178,8 +181,8 @@
                                  iconPos="#{langBean.styleFloat}"
                                  ajax="false"
                                  style="float:#{langBean.styleFloat}"                                                                   
-                                 actionListener="#{addEditRecruitersBean.saveEvent()}" />
-                                              
+                                 actionListener="#{AddEditRecruiterBean.saveEvent()}" />
+
             </h:form>
         </ui:decorate>
     </h:body>

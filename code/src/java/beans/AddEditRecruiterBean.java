@@ -34,6 +34,7 @@ public class AddEditRecruiterBean implements Serializable {
 
     private Recruiter recruiter;
     private RecruiterAddress address;
+    
 
     @Inject
     private beans.SessionBean sessionBean;

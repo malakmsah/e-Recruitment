@@ -93,16 +93,6 @@
 
                         <p:outputLabel value="#{msgs.password}:" for="password"/>
                         <p:password id="password"
-                                    style="width:600px"
-                                    value="#{AddEditRecruiterBean.recruiter.password}"                                      
-                                    required="true"
-                                    maxlength="255"
-                                    requiredMessage="#{msgs.required_field}">
-                        </p:password>
-                        <h:message for="password" styleClass="errorMsg"/>
-
-                        <p:outputLabel value="#{msgs.password}:" for="password"/>
-                        <p:password id="password"
                                     maxlength="255"                                    
                                     required="true"
                                     requiredMessage="#{msgs.required_field}"
@@ -122,9 +112,9 @@
                                     value="#{AddEditRecruiterBean.recruiter.password}" 
                                     style="width:600px"
                                     >
-                            <p:watermark for="signup_password_confirm" value="#{msgs.confirm_password}"/>   
+                            <p:watermark for="confPassword" value="#{msgs.confirm_password}"/>   
                         </p:password>
-                        <h:message for="confPassword" styleClass="errorMsg" display="text"/>
+                        <h:message for="confPassword" styleClass="errorMsg"/>
 
                         <p:outputLabel value="#{msgs.phone}:" for="phone"/>
                         <p:inputText id="phone"
@@ -146,18 +136,6 @@
                                      requiredMessage="#{msgs.required_field}">
                         </p:inputText>
                         <h:message for="email" styleClass="errorMsg"/>
-
-                        <p:outputLabel value="#{msgs.email}:" for="email"/>
-                        <p:inputText id="email"
-                                     style="width:600px"
-                                     value="#{AddEditRecruiterBean.recruiter.email}"                                      
-                                     required="true"
-                                     maxlength="255"
-                                     requiredMessage="#{msgs.required_field}">
-                        </p:inputText>
-                        <h:message for="email" styleClass="errorMsg"/>
-
-
 
                         <p:outputLabel value="#{msgs.date}:" for="date"/>
                         <p:calendar id="date"

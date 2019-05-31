@@ -1,0 +1,11 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">                            
+    <h:form id="logout_form"> 
+        <h:panelGrid cellspacing="5px" columns="2" >
+            <h:commandLink style="float:left"
+                           value="#{langBean.linkLabel}"                       
+                           actionListener="#{langBean.toggleLanguage()}"/>       
+        </h:panelGrid>
+    </h:form>               
+</ui:composition>    

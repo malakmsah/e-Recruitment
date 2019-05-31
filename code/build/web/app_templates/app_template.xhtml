@@ -10,15 +10,17 @@
                     <ui:include src="/app_templates/divs/app_header.xhtml"/>
                 </ui:insert>
             </div> 
-            <div  id="upper_left">
-                <ui:insert name="upper_left">
-                    <ui:include src="/app_templates/divs/upper_left.xhtml"/>
-                </ui:insert>   
-            </div>
-            <div  id="upper_right">
-                <ui:insert name="upper_right">
-                    <ui:include src="/app_templates/divs/upper_right.xhtml"/>
-                </ui:insert>   
+            <div id="upper" style="display:block; width:100%; clear:both;">
+                <div  id="upper_left" style="float:#{langBean.styleFloat};width:300px;text-align:#{langBean.styleFloat};">
+                    <ui:insert name="upper_left">
+                        <ui:include src="/app_templates/divs/upper_left.xhtml"/>
+                    </ui:insert>   
+                </div>
+                <div  id="upper_right" style="float:#{langBean.styleFloatOpposite};width:100px;text-align:#{langBean.styleFloatOpposite};">
+                    <ui:insert name="upper_right">
+                        <ui:include src="/app_templates/divs/upper_right.xhtml"/>
+                    </ui:insert>   
+                </div>
             </div>
             <div  id="ribbon_menu">
                 <ui:insert name="ribbon_menu">

@@ -7,66 +7,26 @@
     <h:head>
         <title>#{msgs.app_title}</title>
     </h:head>
-    <h:body>
+    <h:body dir="#{langBean.dir}">
         <ui:decorate template="/app_templates/login_template.xhtml">   
             <center>
                 <p:fieldset  style="width: 410px;
-                             height: 420px;
+                             height: 180px;
                              box-shadow:9px 0 4px -4px #cccccc, -8px 0 5px -4px #cccccc;">
-                    <center> 
-                        <h:form id="login_form">
-
-                            <br/><br/>                                    
-
-                            <h:panelGrid style="text-align: left">
-                                <p:messages id="messages"/> 
-                            </h:panelGrid>                       
-                            <br/>
-                            <h:panelGrid columns="1" cellspacing="10px">
-                                <p:outputLabel style="color: #0B70BE" value="#{msgs.username}:"/>
-                                <p:inputText id="login_username"
-                                             maxlength="64"                                         
-                                             value="#{loginBean.username}"
-                                             style="width:300px"
-                                             required="true"
-                                             requiredMessage="#{msgs.wrong_username}">
-                                    <p:watermark for="login_username" value="#{msgs.enter_username}"/>                                                                                                
-                                </p:inputText>
-
-                                <p:outputLabel style="color: #0B70BE" value="#{msgs.password}:"/>
-                                <p:password id="login_password" 
-                                            maxlength="48"                                       
-                                            required="true"
-                                            requiredMessage="#{msgs.wrong_password}"
-                                            value="#{loginBean.password}"
-                                            style="width:300px;">          
-                                    <p:watermark for="login_password" value="#{msgs.enter_password}"/>                                
-                                </p:password>                             
-                            </h:panelGrid>
-
-                            <p:commandButton   value="#{msgs.login}"                                                
-                                               style="width:100px; height:45px; margin-top:25px; background-color: #428BCA;" 
+                    <center>
+                        <h:form id="seeker_choice">
+                            <p:commandButton   value="#{msgs.hp_choice_job_seeker}"                                                
+                                               style="width:270px; height:45px; margin-top:30px; background-color: #428BCA;" 
                                                ajax="false"
-                                               actionListener="#{loginBean.login()}">
-                            </p:commandButton>
+                                               action="jobseeker/signup?faces-redirect=true"/>
                         </h:form>
-                        <h:form id="signup_form_seeker">
-
-                            <p:commandButton   value="#{msgs.signup_seeker}"                                                
-                                               style="width:170px; height:45px; margin-top:25px; background-color: #428BCA;" 
+                        
+                        <h:form id="recruiter_choice">
+                            <p:commandButton   value="#{msgs.hp_choice_recruiter}"                                                
+                                               style="width:270px; height:45px; margin-top:25px; background-color: #428BCA;" 
                                                ajax="false"
-                                               action="signup_seeker?faces-redirect=true"/>
-
+                                               action="recruiter/signup?faces-redirect=true"/>
                         </h:form>
-                        <h:form id="signup_form_recruiter">
-
-                            <p:commandButton   value="#{msgs.signup_recruiter}"                                                
-                                               style="width:170px; height:45px; margin-top:25px; background-color: #428BCA;" 
-                                               ajax="false"
-                                               action="signup_recruiter?faces-redirect=true"/>
-
-                        </h:form>
-
                     </center>
                 </p:fieldset> 
             </center>

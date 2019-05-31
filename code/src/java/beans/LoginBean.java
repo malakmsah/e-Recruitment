@@ -22,18 +22,11 @@ import models.Seeker;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-    private String username;
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    private String password;
     private Connection connection;
+
+    private int id;
+    private String username;
+    private String password;
 
     private final SeekerDao seekerDao = new SeekerDao();
 
@@ -43,6 +36,14 @@ public class LoginBean implements Serializable {
 
     public void setConnection(Connection connection) {
         this.connection = connection;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -61,13 +62,9 @@ public class LoginBean implements Serializable {
         this.password = password;
     }
 
-    public LoginBean() {
-    }
-
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         boolean success = true;
-
         try {
 
             Seeker seeker = seekerDao.getSeekerByNameAndPassword(username, password);
@@ -81,11 +78,9 @@ public class LoginBean implements Serializable {
         } finally {
 
         }
-
         if (success) {
             navigate("edit");
         }
-
     }
 
     public void logout() throws Exception {

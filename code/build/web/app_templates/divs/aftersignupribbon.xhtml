@@ -14,28 +14,19 @@
                                       styleClass="ribbonButton"
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="edit_info_seeker?faces-redirect=true" ajax="false"> 
-
+                                      action="jobseeker/edit?faces-redirect=true" ajax="false"> 
                     </p:commandButton>
-
                 </p:ribbonGroup>               
             </p:tab>
 
             <p:tab title="#{msgs.apply}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
+                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.edit_account}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/events/manage_events.xhtml">                         
-                    </p:commandButton>
-
-                    <p:commandButton  value="#{msgs.show_profile}" 
+                    <p:commandButton  value="#{msgs.vacancies}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="/events/manage_events.xhtml">                         
+                                      action="vacancies/show_vacancies.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>

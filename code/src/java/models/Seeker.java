@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -21,7 +22,7 @@ public class Seeker implements Serializable {
     private String password;
     private int phone;
     private String email;
-    private Timestamp birthdate;
+    private Date birthdate;
     private String gender;
     private Timestamp created_at;
 
@@ -81,11 +82,11 @@ public class Seeker implements Serializable {
         this.email = email;
     }
 
-    public Timestamp getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Timestamp birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 

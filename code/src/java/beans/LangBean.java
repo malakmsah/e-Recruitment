@@ -21,6 +21,7 @@ public class LangBean implements Serializable {
     private String lang;
     private String dir;
     private String styleFloat;
+    private String styleFloatOpposite;
     private String linkLabel;
     private boolean isEnglish;
 
@@ -29,6 +30,7 @@ public class LangBean implements Serializable {
         lang = "en";
         dir = "ltr";
         styleFloat = "left";
+        styleFloatOpposite = "right";
         linkLabel = "Arabic";
         isEnglish = true;
     }
@@ -64,6 +66,14 @@ public class LangBean implements Serializable {
     public void setStyleFloat(String styleFloat) {
         this.styleFloat = styleFloat;
     }
+    
+    public String getStyleFloatOpposite() {
+        return styleFloatOpposite;
+    }
+
+    public void setStyleFloatOpposite(String styleFloatOpposite) {
+        this.styleFloatOpposite = styleFloatOpposite;
+    }
 
     public boolean getIsEnglish() {
         return isEnglish;
@@ -89,12 +99,14 @@ public class LangBean implements Serializable {
             lang = "en";
             dir = "ltr";
             styleFloat = "left";
+            styleFloatOpposite = "right";
             linkLabel = "Arabic";
         } else {
             locale = "ar";
             lang = "ar";
             dir = "rtl";
             styleFloat = "right";
+            styleFloatOpposite = "left";
             linkLabel = "انجليزي";
         }
     }

@@ -1,8 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html">                  
-    <h:outputText style="float:left;"
-                  value="© 2017, German Jordanian University, all rights reserved."/>
-    <h:outputText style="float:right;"
-                  value="Powered by the students of CE 743"/>   
+    <h:outputText style="float:#{langBean.styleFloat};"
+                  value="#{msgs.copyright}"/>
+    <h:outputText style="float:#{langBean.styleFloatOpposite};"
+                  value="#{msgs.poweredby}"/>   
 </ui:composition>

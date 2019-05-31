@@ -27,15 +27,9 @@ public class ConnectionDao implements Serializable {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
 
         if (!useConnectionPool) {
-            //oracleUrl = "jdbc:oracle:thin:@52.232.34.123:1521:CE471DB";
-            oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-            databaseUsername = "OMAR";
-            databasePassword = "12345";
-
-            // Online DB
-//            oracleUrl = "gjujobs.cjqn4frndabf.eu-west-2.rds.amazonaws.com";
-//            databaseUsername = "gjobs";
-//            databasePassword = "gjobs12345";
+            oracleUrl = "jdbc:oracle:thin:@gjobs.ck0xb2jwzofh.us-west-2.rds.amazonaws.com:1521/gjobs";
+            databaseUsername = "malakmsah";
+            databasePassword = "malak123";
         }
 
         FacesContext context = FacesContext.getCurrentInstance();

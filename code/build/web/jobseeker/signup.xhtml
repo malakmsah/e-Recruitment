@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Author : Omar-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head></h:head>
+    <h:body dir="#{langBean.dir}">
+        <ui:decorate template="/app_templates/signup_template.xhtml">
+            <h:form id="signup_form">
+                <br/><br/>                  
+                <p:panel header="#{msgs.js_signup_header}"                            
+                         style="min-height:400px; 
+                         direction:#{langBean.dir};margin-top:10px; font-size:10pt">
+
+                    <h:panelGrid columns="3" cellspacing="10px" >
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.first_name}:"/>
+                        <p:inputText id="signup_firstname"
+                                     maxlength="64"    
+                                     required="true"    
+                                     requiredMessage="#{msgs.required_field}"                                 
+                                     value="#{jsSignupBean.firstname}"
+                                     style="width:300px"
+                                     >
+                            <p:watermark for="signup_firstname" value="#{msgs.first_name}"/>                                                                                                
+                        </p:inputText>
+                        <p:message for="signup_firstname" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.lastname}:"/>
+                        <p:inputText id="signup_lastname"
+                                     maxlength="64"    
+                                     required="true"  
+                                     requiredMessage="#{msgs.required_field}"                                      
+                                     value="#{jsSignupBean.lastname}"
+                                     style="width:300px"
+                                     >
+                            <p:watermark for="signup_lastname" value="#{msgs.lastname}"/>                                                                                                
+                        </p:inputText>
+                        <p:message for="signup_lastname" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.email}:"/>
+                        <p:inputText id="signup_email"
+                                     maxlength="64" 
+                                     required="true"
+                                     requiredMessage="#{msgs.required_field}"
+                                     value="#{jsSignupBean.email}"
+                                     style="width:300px"
+                                     >
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            <p:watermark for="signup_email" value="#{msgs.email}"/>                                                                                                
+                        </p:inputText>
+                        <p:message for="signup_email" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.phone}:"/>
+                        <p:inputText id="signup_phone"
+                                     maxlength="64"    
+                                     required="true"  
+                                     requiredMessage="#{msgs.required_field}"                                      
+                                     value="#{jsSignupBean.phone}"
+                                     style="width:300px"
+                                     >
+                            <p:watermark for="signup_lastname" value="#{msgs.lastname}"/>                                                                                                
+                        </p:inputText>
+                        <p:message for="signup_lastname" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.username}:"/>
+                        <p:inputText id="signup_username"
+                                     maxlength="64" 
+                                     required="true"
+                                     requiredMessage="#{msgs.required_field}"
+                                     value="#{jsSignupBean.username}"
+                                     style="width:300px"
+                                     >
+                            <p:watermark for="signup_username" value="#{msgs.username}"/>                                                                                                
+                        </p:inputText>
+                        <p:message for="signup_username" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" for="gender" value="#{msgs.gender}" />
+                        <p:selectOneMenu id="gender" value="#{jsSignupBean.gender}" style="width:300px">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems value="#{jsSignupBean.genders}" />
+                        </p:selectOneMenu>
+                        <p:message for="gender" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.birthdate}" for="birthdate" />
+                        <p:calendar size="40" value="#{seekerEditInfoBean.birthdate}"  id="birthdate" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="birthdate" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.password}:"/>
+                        <p:password id="signup_password" 
+                                    maxlength="48"                                       
+                                    required="true"
+                                    requiredMessage="#{msgs.required_field}"
+                                    value="#{jsSignupBean.password}"
+                                    style="width:300px;"
+                                    match="signup_password_confirm"
+                                    >          
+                            <p:watermark for="signup_password" value="#{msgs.password}"/>                                
+                        </p:password>    
+                        <p:message for="signup_password" display="text" />
+
+                        <p:outputLabel style="color: #0B70BE" value="#{msgs.confirm_password}:"/>
+                        <p:password id="signup_password_confirm" 
+                                    maxlength="48"                                       
+                                    required="true"
+                                    requiredMessage="#{msgs.required_field}"
+                                    value="#{jsSignupBean.password}"
+                                    style="width:300px;" >          
+                            <p:watermark for="signup_password_confirm" value="#{msgs.confirm_password}"/>                                
+                        </p:password>  
+                        <p:message for="signup_password_confirm" display="text" />
+                    </h:panelGrid>
+
+                    <p:commandButton   value="#{msgs.signup}"                                                
+                                       style="width:130px; height:35px;   margin-top:25px;  float:#{langBean.styleFloat}; margin-left:220px;  background-color: #428BCA;" 
+                                       ajax="false"
+                                       action="#{jsSignupBean.signup()}" /> 
+                </p:panel>
+            </h:form> 
+            <hr/>
+            <h:form>
+                <p:commandButton   value="#{msgs.have_an_account}"                                                
+                                   style="width:300px; height:35px; margin-top:25px;  float:#{langBean.styleFloat};  margin-left: 230px;  background-color: #428BCA;" 
+                                   ajax="false"
+                                   action="login?faces-redirect=true" />
+            </h:form>
+        </ui:decorate>   
+    </h:body>
+</html>

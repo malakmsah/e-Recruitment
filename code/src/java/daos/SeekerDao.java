@@ -28,16 +28,13 @@ public class SeekerDao extends ConnectionDao {
             Connection conn = getConnection();
 
             String sql = "SELECT * FROM JOB_SEEKER";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            try (PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
-            ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(populateSeeker(rs));
+                }
 
-            while (rs.next()) {
-                list.add(populateSeeker(rs));
             }
-
-            rs.close();
-            ps.close();
 
             return list;
         } catch (SQLException e) {
@@ -45,30 +42,13 @@ public class SeekerDao extends ConnectionDao {
         }
     }
 
-//    private Event populateEventWithType(ResultSet rs, HashMap<Integer, EventType> eventTypes) 
-//            throws SQLException {
-//        Event event = new Event();
-//        
-//        event.setEventId(rs.getInt("EVENT_ID"));
-//        event.setNameAr(rs.getString("NAME_AR"));
-//        event.setNameEn(rs.getString("NAME_EN"));
-//        event.setPlaceAr(rs.getString("PLACE_AR"));
-//        event.setPlaceEn(rs.getString("PLACE_EN"));
-//        event.setCapacity(rs.getInt("CAPACITY"));
-//        event.setDate(rs.getTimestamp("EVENT_DATE"));
-//        
-//        EventType eventType = eventTypes.get(rs.getInt("EVENT_TYPE_ID"));        
-//        event.setType(eventType);                
-//        
-//        return event;
-//    }
     private Seeker populateSeeker(ResultSet rs) throws SQLException {
         Seeker seeker = new Seeker();
 
         seeker.setId(rs.getInt("ID"));
         seeker.setFirstname(rs.getString("FIRST_NAME"));
         seeker.setLastname(rs.getString("LAST_NAME"));
-        seeker.setBirthdate(rs.getTimestamp("BIRTH_DATE"));
+        seeker.setBirthdate(rs.getDate("BIRTH_DATE"));
         if (rs.getInt("GENDER") == 1) {
             seeker.setGender("Male");
         } else {
@@ -87,7 +67,7 @@ public class SeekerDao extends ConnectionDao {
         try {
             Connection conn = getConnection();
 
-            String sql = "INSERT INTO JOB_SEEKER (ID,"
+            String sql = "INSERT INTO JOB_SEEKER ("
                     + "FIRST_NAME,"
                     + "LAST_NAME,"
                     + "BIRTH_DATE,"
@@ -95,30 +75,26 @@ public class SeekerDao extends ConnectionDao {
                     + "EMAIL,"
                     + "PHONE,"
                     + "USERNAME,"
-                    + "PASSWORD,"
-                    + "CREATED_AT)"
-                    + " VALUES ((select max(ID) from JOB_SEEKER)+1,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-//             ps.setInt(1, id++);
-            ps.setString(1, seeker.getFirstname());
-            ps.setString(2, seeker.getLastname());
-            ps.setTimestamp(3, seeker.getBirthdate());
-            if (seeker.getGender().equals("Male")) {
-                ps.setInt(4, 1);
-            } else {
-                ps.setInt(4, 0);
+                    + "PASSWORD"
+                    + ")"
+                    + " VALUES (?,?,?,?,?,?,?,?)";
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, seeker.getFirstname());
+                ps.setString(2, seeker.getLastname());
+                ps.setDate(3, new java.sql.Date(seeker.getBirthdate().getTime()));
+                if (seeker.getGender().equals("Male")) {
+                    ps.setInt(4, 1);
+                } else {
+                    ps.setInt(4, 0);
+                }
+                ps.setString(5, seeker.getEmail());
+                ps.setInt(6, seeker.getPhone());
+                ps.setString(7, seeker.getUsername());
+                ps.setString(8, seeker.getPassword());
+
+                ps.executeUpdate();
             }
-            ps.setString(5, seeker.getEmail());
-            ps.setInt(6, seeker.getPhone());
-            ps.setString(7, seeker.getUsername());
-            ps.setString(8, seeker.getPassword());
-            ps.setTimestamp(9, seeker.getCreated_at());
-
-            ps.executeUpdate();
-
-            ps.close();
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new SQLException(e.getMessage());
         }
     }
@@ -136,24 +112,23 @@ public class SeekerDao extends ConnectionDao {
                     + " USERNAME=?,"
                     + " PASSWORD=?"
                     + " WHERE ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, seeker.getFirstname());
+                ps.setString(2, seeker.getLastname());
+                ps.setDate(3, new java.sql.Date(seeker.getBirthdate().getTime()));
+                if (seeker.getGender().equals("Male")) {
+                    ps.setInt(4, 1);
+                } else {
+                    ps.setInt(4, 0);
+                }
+                ps.setString(5, seeker.getEmail());
+                ps.setInt(6, seeker.getPhone());
+                ps.setString(7, seeker.getUsername());
+                ps.setString(8, seeker.getPassword());
+                ps.setInt(9, seeker.getId());
 
-            ps.setString(1, seeker.getFirstname());
-            ps.setString(2, seeker.getLastname());
-            ps.setTimestamp(3, seeker.getBirthdate());
-//                 if(seeker.getGender().equals("Male"))
-            ps.setInt(4, 1);
-//             else
-//               ps.setInt(4, 0);
-            ps.setString(5, seeker.getEmail());
-            ps.setInt(6, seeker.getPhone());
-            ps.setString(7, seeker.getUsername());
-            ps.setString(8, seeker.getPassword());
-            ps.setInt(9, seeker.getId());
-
-            ps.executeUpdate();
-
-            ps.close();
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
@@ -163,15 +138,14 @@ public class SeekerDao extends ConnectionDao {
         Connection conn = getConnection();
         try {
             String sql = "DELETE FROM JOB_SEEKER WHERE ID=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, seekerId);
-            ps.executeUpdate();
-            ps.close();
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, seekerId);
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new SQLException(e.getMessage());
         }
     }
-//    
 
     public Seeker getSeekerById(int seekerId) throws Exception {
         try {
@@ -180,16 +154,14 @@ public class SeekerDao extends ConnectionDao {
 
             String sql = "SELECT FIRST_NAME,LAST_NAME,BIRTH_DATE,GENDER,EMAIL,PHONE,USERNAME,PASSWORD,CREATED_AT FROM JOB_SEEKER WHERE ID=?";
 
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, seekerId);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                seeker = populateSeeker(rs);
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, seekerId);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        seeker = populateSeeker(rs);
+                    }
+                }
             }
-
-            rs.close();
-            ps.close();
 
             return seeker;
         } catch (SQLException e) {
@@ -204,16 +176,16 @@ public class SeekerDao extends ConnectionDao {
 
             String sql = "SELECT ID,FIRST_NAME,LAST_NAME,BIRTH_DATE,GENDER,EMAIL,PHONE,USERNAME,PASSWORD,CREATED_AT FROM JOB_SEEKER WHERE USERNAME=? AND PASSWORD=?";
 
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, userName);
+                ps.setString(2, password);
 
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                seeker = populateSeeker(rs);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        seeker = populateSeeker(rs);
+                    }
+                }
             }
-            rs.close();
-            ps.close();
 
             return seeker;
         } catch (SQLException e) {

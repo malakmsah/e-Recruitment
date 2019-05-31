@@ -8,9 +8,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       >
 
-    <h:head>
-
-    </h:head>
+    <h:head></h:head>
 
     <h:body>
         <ui:decorate template="/app_templates/aftersignup_template.xhtml">
@@ -58,7 +56,7 @@
                                     value="#{seekerEditInfoBean.password}"
                                     match="signup_password_confirm"
                                     >          
-                            <p:watermark for="signup_password" value="#{msgs.enter_password}"/>                                
+                            <p:watermark for="signup_password" value="#{msgs.password}"/>                                
                         </p:password>    
                         <p:message for="signup_password" display="text" />
 
@@ -72,10 +70,6 @@
                             <p:watermark for="signup_password_confirm" value="#{msgs.confirm_password}"/>                                
                         </p:password>  
                         <p:message for="signup_password_confirm" display="text" />
-
-
-
-
 
                         <p:outputLabel for="interests" value="#{msgs.interests}" />
                         <p:selectOneMenu id="interests" value="#{seekerEditInfoBean.interest}" style="width:100%" >

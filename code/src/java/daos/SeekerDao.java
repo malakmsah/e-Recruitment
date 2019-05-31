@@ -70,27 +70,27 @@ public class SeekerDao extends ConnectionDao {
             String sql = "INSERT INTO JOB_SEEKER ("
                     + "FIRST_NAME,"
                     + "LAST_NAME,"
-                    + "BIRTH_DATE,"
+                    //+ "BIRTH_DATE,"
                     + "GENDER,"
                     + "EMAIL,"
                     + "PHONE,"
                     + "USERNAME,"
                     + "PASSWORD"
                     + ")"
-                    + " VALUES (?,?,?,?,?,?,?,?)";
+                    + " VALUES (?,?,?,?,,?,?,?)";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, seeker.getFirstname());
                 ps.setString(2, seeker.getLastname());
-                ps.setDate(3, new java.sql.Date(seeker.getBirthdate().getTime()));
+                //ps.setDate(3, new java.sql.Date(seeker.getBirthdate().getTime()));
                 if (seeker.getGender().equals("Male")) {
-                    ps.setInt(4, 1);
+                    ps.setInt(3, 1);
                 } else {
-                    ps.setInt(4, 0);
+                    ps.setInt(3, 0);
                 }
-                ps.setString(5, seeker.getEmail());
-                ps.setInt(6, seeker.getPhone());
-                ps.setString(7, seeker.getUsername());
-                ps.setString(8, seeker.getPassword());
+                ps.setString(4, seeker.getEmail());
+                ps.setInt(5, seeker.getPhone());
+                ps.setString(6, seeker.getUsername());
+                ps.setString(7, seeker.getPassword());
 
                 ps.executeUpdate();
             }

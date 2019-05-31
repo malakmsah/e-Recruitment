@@ -142,8 +142,8 @@ public class JsSignupBean implements Serializable {
             seeker.setUsername(username);
             seeker.setPassword(password);
             seeker.setEmail(email);
-            seeker.setBirthdate(new java.sql.Date(birthdate.getTime()));
-            seeker.setCreated_at(created_at);
+            seeker.setPhone(phone);
+            //seeker.setBirthdate(new java.sql.Date(birthdate.getTime()));
             seeker.setGender(gender);
             seekerDao.insertSeeker(seeker);
         } catch (Exception ex) {

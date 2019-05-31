@@ -18,7 +18,6 @@
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
-
             <p:tab title="#{msgs.apply}">  
                  <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
@@ -26,7 +25,7 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="vacancies/show_vacancies.xhtml">                         
+                                      action="http://localhost:8080/code/faces/vacancies/show_vacancies.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>

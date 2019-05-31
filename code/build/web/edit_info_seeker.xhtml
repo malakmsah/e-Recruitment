@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Author : Omar-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <h:head></h:head>
+
+    <h:body>
+        <ui:decorate template="/app_templates/aftersignup_template.xhtml">
+            <p:panel id="pnl" header="Edit Information" style="margin-bottom:10px;">
+
+                <h:form id="form1">
+                    <p:messages id="messages" />
+
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel value="#{msgs.first_name}" for="firstname" />
+                        <p:inputText id="firstname" required="true" label="firstname"
+                                     size="40" requiredMessage="Please enter your first name."
+                                     value="#{seekerEditInfoBean.firstname}">
+                        </p:inputText>
+                        <p:message for="firstname" />
+
+
+                        <p:outputLabel value="#{msgs.lastname}" for="lastname" />
+                        <p:inputText id="lastname" required="true" label="last name"
+                                     size="40" requiredMessage="Please enter your last name."
+                                     value="#{seekerEditInfoBean.lastname}">
+                        </p:inputText>
+                        <p:message for="lastname" />
+
+                        <p:outputLabel value="#{msgs.username}" for="username" />
+                        <p:inputText id="username" required="true" label="username"
+                                     size="40" requiredMessage="Please enter your user name."
+                                     value="#{seekerEditInfoBean.username}">
+                        </p:inputText>
+                        <p:message for="username" />
+
+
+                        <p:outputLabel value="#{msgs.email}" for="email" />
+                        <p:inputText id="email" required="true" label="email"
+                                     size="40"  requiredMessage="Please enter your email."
+                                     value="#{seekerEditInfoBean.email}">
+                        </p:inputText>
+                        <p:message for="email" />
+
+                        <p:outputLabel  value="#{msgs.password}:"/>
+                        <p:password id="signup_password" 
+                                    size="40"                                       
+                                    required="true"
+                                    requiredMessage="#{msgs.wrong_password}"
+                                    value="#{seekerEditInfoBean.password}"
+                                    match="signup_password_confirm"
+                                    >          
+                            <p:watermark for="signup_password" value="#{msgs.password}"/>                                
+                        </p:password>    
+                        <p:message for="signup_password" display="text" />
+
+                        <p:outputLabel  value="#{msgs.confirm_password}:"/>
+                        <p:password id="signup_password_confirm" 
+                                    size="40"                                      
+                                    required="true"
+                                    requiredMessage="#{msgs.wrong_password}"
+                                    value="#{seekerEditInfoBean.password}"
+                                    >          
+                            <p:watermark for="signup_password_confirm" value="#{msgs.confirm_password}"/>                                
+                        </p:password>  
+                        <p:message for="signup_password_confirm" display="text" />
+
+                        <p:outputLabel for="interests" value="#{msgs.interests}" />
+                        <p:selectOneMenu id="interests" value="#{seekerEditInfoBean.interest}" style="width:100%" >
+
+                            <f:selectItem itemLabel="Select Interest" itemValue=""  />
+                            <f:selectItems value="#{seekerEditInfoBean.interestsNames}" />
+                        </p:selectOneMenu>
+                        <p:message for="interests" />
+
+                        <p:outputLabel for="education" value="#{msgs.education}" />
+                        <p:selectOneMenu id="education" value="#{seekerEditInfoBean.education}" style="width:100%">
+
+                            <f:selectItem itemLabel="Education Field" itemValue=""  />
+                            <f:selectItems value="#{seekerEditInfoBean.educationsMajors}" />
+                        </p:selectOneMenu>
+                        <p:message for="education" />
+
+                        <p:outputLabel value="#{msgs.first_date}" for="myDate1" />
+                        <p:calendar size="40" value="#{seekerEditInfoBean.fromDate}"  id="myDate1" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="myDate1" />
+
+                        <p:outputLabel value="#{msgs.end_date}" for="myDate1" />
+                        <p:calendar size="40" value="#{seekerEditInfoBean.toDate}"  id="myDate2" locale="it">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </p:calendar>
+                        <p:message for="myDate2" />
+
+                        <p:outputLabel for="position" value="#{msgs.position}" />
+                        <p:inputText id="position" 
+                                     size="40"                                       
+                                     required="true"
+                                     value="#{seekerEditInfoBean.position}">          
+                            <p:watermark for="position" value="#{msgs.enter_position}"/>                                
+                        </p:inputText>    
+                        <p:message for="position" />
+
+                        <p:outputLabel value="#{msgs.company}" for="company" />
+                        <p:inputText id="company" required="true" label="company"
+                                     size="40" requiredMessage="Please enter your email."
+                                     value="#{seekerEditInfoBean.company}">
+                        </p:inputText>
+                        <p:message for="company" />
+
+
+                        <p:outputLabel value="#{msgs.phone}" for="contact" />
+                        <p:inputText id="contact" required="true" label="contact"
+                                     size="40" requiredMessage=" Please Specify in which field your experience."
+                                     value="#{seekerEditInfoBean.phone}">
+                            <p:watermark for="contact" value="example 00962788028114 *" />
+
+                        </p:inputText>
+                        <p:message for="contact" />
+
+
+                        <p:outputLabel for="gender" value="#{msgs.gender}" />
+                        <p:selectOneMenu id="gender" value="#{seekerEditInfoBean.gender}" style="width:125px">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <f:selectItems value="#{seekerEditInfoBean.genders}" />
+                        </p:selectOneMenu>
+                        <p:message for="gender" display="text" />
+
+                    </h:panelGrid>
+
+                    <p:commandButton id="update_info" value="Update" style="width:110px; height:30px; margin-top:25px; background-color: #428BCA;" 
+                                     ajax="false"
+                                     styleClass="commandButton"
+                                     action="#{seekerEditInfoBean.updateInfo()}"
+                                     />
+
+
+
+                </h:form>
+
+            </p:panel>
+
+
+
+
+
+
+        </ui:decorate>
+    </h:body>
+</html>

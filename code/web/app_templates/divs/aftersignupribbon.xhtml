@@ -7,25 +7,25 @@
     <h:form id="ribbon_menu2"             
             style="direction:#{langBean.dir}; width:100%">           
         <p:ribbon activeIndex="#{sessionBean.menuIndex}">                        
-            <p:tab title="#{msgs.edit_account}">  
+            <p:tab title="#{msgs.account}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
                     <p:commandButton  value="#{msgs.edit}" 
                                       styleClass="ribbonButton"
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="jobseeker/edit?faces-redirect=true" ajax="false"> 
+                                      action="/jobseeker/edit?faces-redirect=true"> 
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
-            <p:tab title="#{msgs.apply}">  
+            <p:tab title="#{msgs.vacancies}">  
                  <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.vacancies}" 
+                    <p:commandButton  value="#{msgs.browse}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="http://localhost:8080/code/faces/vacancies/show_vacancies.xhtml">                         
+                                      action="/vacancies/browse.xhtml?faces-redirect=true">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>

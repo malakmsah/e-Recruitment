@@ -54,7 +54,7 @@ public class RecruiterDao extends ConnectionDao {
                     + " PHONE,"
                     + " EMAIL,"
                     + " ABOUT,"
-                    + " NUMBER_OF_EMPLOYEES"
+                    + " EMPLOYEES"
                     + ")"
                     + " VALUES (?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -90,7 +90,7 @@ public class RecruiterDao extends ConnectionDao {
                     + " PHONE=?,"
                     + " EMAIL=?,"
                     + " ABOUT=?,"
-                    + " NUMBER_OF_EMPLOYEES=?,"
+                    + " EMPLOYEES=?,"
                     + " WHERE ID=?";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, recruiters.getNameAr());
@@ -147,7 +147,7 @@ public class RecruiterDao extends ConnectionDao {
         recruiter.setAbout(rs.getString("ABOUT"));
         recruiter.setEmail(rs.getString("EMAIL"));
         recruiter.setPhone(rs.getInt("PHONE"));
-        recruiter.setNumberOfEmployees(rs.getInt("NUMBER_OF_EMPLOYEES"));
+        //recruiter.setNumberOfEmployees(rs.getInt("EMPLOYEES"));
         recruiter.setCreatedAt(rs.getTimestamp("CREATED_AT"));
 
         return recruiter;
@@ -158,29 +158,31 @@ public class RecruiterDao extends ConnectionDao {
             Recruiter recruiter = null;
             Connection conn = getConnection();
 
-            String sql = "SELECT "
-                    + " ID,"
-                    + " NAME_AR,"
-                    + " NAME_EN,"
-                    + " USERNAME,"
-                    + " PASSWORD,"
-                    + " PHONE,"
-                    + " EMAIL,"
-                    + " ABOUT,"
-                    + " NUMBER_OF_EMPLOYEES,"
-                    + " CREATED_AT"
-                    + " FROM JOB_SEEKER WHERE USERNAME=? AND PASSWORD=?";
+            String sql = " SELECT ID ,"
+                    + "NAME_AR ,"
+                    + "NAME_EN ,"
+                    + "USERNAME ,"
+                    + "PASSWORD ,"
+                    + "PHONE ,"
+                    + "EMAIL ,"
+                    + "ABOUT ,"
+                    + "FOUNDED_AT ,"
+                    + "CREATED_AT ,"
+                    + "NUMBER_OF_EMPLOYEES ,"
+                    + "EMPLOYEES "
+                    + "FROM JOB_SEEKER WHERE (USERNAME='" + userName + "' AND PASSWORD='" + password + "')";
 
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, userName);
-                ps.setString(2, password);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // ps.setString(1, userName);
+            // ps.setString(2, password);
 
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        recruiter = populateRecruiter(rs);
-                    }
-                }
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                recruiter = populateRecruiter(rs);
             }
+
+            rs.close();
+            ps.close();
 
             return recruiter;
         } catch (SQLException e) {

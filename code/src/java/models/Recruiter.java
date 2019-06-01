@@ -102,8 +102,8 @@ public class Recruiter implements Serializable {
         return founded_at;
     }
 
-    public void setFoundedAt(Date birth_date) {
-        this.founded_at = birth_date;
+    public void setFoundedAt(Date founded_at) {
+        this.founded_at = founded_at;
     }
 
     public Timestamp getCreatedAt() {

@@ -22,10 +22,9 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.nameAr}:" for="nameAr"/>
                         <p:inputText id="nameAr"
                                      style="width:300px"
-                                     value="#{AddEditRecruiterBean.name_ar}"                                      
-                                     required="true"
+                                     value="#{AddEditRecruiterBean.name_ar}"  
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_field}">
+                                     >
                             <p:watermark for="nameAr" value="#{msgs.nameAr}"/>  
                         </p:inputText>
                         <h:message for="nameAr"/>
@@ -33,10 +32,9 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.nameEn}:" for="nameEn"/>
                         <p:inputText id="nameEn"
                                      style="width:300px"
-                                     value="#{AddEditRecruiterBean.name_en}"                                      
-                                     required="true"
+                                     value="#{AddEditRecruiterBean.name_en}"  
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_field}">
+                                     >
                             <p:watermark for="nameEn" value="#{msgs.nameEn}"/>  
                         </p:inputText>
                         <h:message for="nameEn"/>
@@ -44,9 +42,8 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.numberOfEmployees}:" for="numberOfEmployee"/>
                         <p:spinner id="numberOfEmployee"
                                    style="width:300px"
-                                   value="#{AddEditRecruiterBean.number_of_employees}"                                      
-                                   required="true"
-                                   requiredMessage="#{msgs.required_field}">
+                                   value="#{AddEditRecruiterBean.number_of_employees}"
+                                   >
                             <p:watermark for="numberOfEmployee" value="#{msgs.numberOfEmployees}"/>  
                         </p:spinner>
                         <h:message for="numberOfEmployee"/>
@@ -54,10 +51,9 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.email}:" for="email"/>
                         <p:inputText id="email"
                                      style="width:300px"
-                                     value="#{AddEditRecruiterBean.email}"                                      
-                                     required="true"
+                                     value="#{AddEditRecruiterBean.email}"
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_field}">
+                                     >
                             <p:watermark for="email" value="#{msgs.email}"/> 
                         </p:inputText>
                         <h:message for="email"/>
@@ -65,10 +61,9 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.phone}:" for="phone"/>
                         <p:inputText id="phone"
                                      style="width:300px"
-                                     value="#{AddEditRecruiterBean.phone}"                                      
-                                     required="true"
+                                     value="#{AddEditRecruiterBean.phone}"  
                                      maxlength="255"
-                                     requiredMessage="#{msgs.required_field}">
+                                     >
                             <p:watermark for="phone" value="#{msgs.phone}"/> 
                         </p:inputText>
                         <h:message for="phone"/>
@@ -76,9 +71,8 @@
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.about}:" for="about"/>
                         <p:spinner id="about"
                                    style="width:300px"
-                                   value="#{AddEditRecruiterBean.about}"                                      
-                                   required="true"
-                                   requiredMessage="#{msgs.required_field}">
+                                   value="#{AddEditRecruiterBean.about}"  
+                                   >
                             <p:watermark for="about" value="#{msgs.about}"/>  
                         </p:spinner>
                         <h:message for="numberOfEmployee"/>
@@ -89,10 +83,8 @@
                                     dir="#{langBean.dir}"
                                     pattern="yyyy-MM-dd HH:mm" 
                                     navigator="true"
-                                    required="true"
                                     yearRange="c-20:c+1"
-                                    timeInput="true"
-                                    requiredMessage=" #{msgs.required_field}"
+                                    timeInput="true""
                                     style="width:300px"
                                     > 
                             <p:watermark for="foundedAt" value="#{msgs.foundedAt}"/> 
@@ -101,9 +93,7 @@
 
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.country}:" for="country"/>
                         <p:selectOneMenu value="#{AddEditRecruiterBean.address.country}"
-                                         id="country"
-                                         required="true"                                                                                  
-                                         requiredMessage=" #{msgs.required_field}">
+                                         id="country">
                             <f:selectItem itemLabel="#{msgs.select_one}"         noSelectionOption="true"                              itemValue=""/>
                             <f:selectItems var="country"
                                            value="#{AddEditRecruiterBean.countries}" 
@@ -114,9 +104,7 @@
 
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.city}:" for="city"/>
                         <p:selectOneMenu value="#{AddEditRecruiterBean.address.city}"
-                                         id="city"
-                                         required="true"                                                                                  
-                                         requiredMessage=" #{msgs.required_field}">
+                                         id="city">
                             <f:selectItem itemLabel="#{msgs.select_one}" noSelectionOption="true"
                                           itemValue=""/>
                             <f:selectItems var="city"

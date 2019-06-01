@@ -145,7 +145,7 @@ public class JsSignupBean implements Serializable {
             seeker.setPhone(phone);
             //seeker.setBirthdate(new java.sql.Date(birthdate.getTime()));
             seeker.setGender(gender);
-            seekerDao.insertSeeker(seeker);
+            seekerDao.insert(seeker);
         } catch (Exception ex) {
             Logger.getLogger(JsSignupBean.class.getName()).log(Level.SEVERE, null, ex);
         }

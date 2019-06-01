@@ -69,12 +69,12 @@
                         <h:message for="phone"/>
 
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.about}:" for="about"/>
-                        <p:spinner id="about"
+                        <p:inputText id="about"
                                    style="width:300px"
                                    value="#{AddEditRecruiterBean.about}"  
                                    >
                             <p:watermark for="about" value="#{msgs.about}"/>  
-                        </p:spinner>
+                        </p:inputText>
                         <h:message for="numberOfEmployee"/>
 
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.foundedAt}:" for="foundedAt"/>
@@ -84,7 +84,7 @@
                                     pattern="yyyy-MM-dd HH:mm" 
                                     navigator="true"
                                     yearRange="c-20:c+1"
-                                    timeInput="true""
+                                    timeInput="true"
                                     style="width:300px"
                                     > 
                             <p:watermark for="foundedAt" value="#{msgs.foundedAt}"/> 

@@ -287,7 +287,7 @@ public class JobSeekerBean implements Serializable {
             seeker.setBirthdate(birthdate);
             seeker.setCreated_at(created_at);
             seeker.setGender(gender);
-            seekerDao.insertSeeker(seeker);
+            seekerDao.insert(seeker);
         } catch (Exception ex) {
             Logger.getLogger(JsSignupBean.class.getName()).log(Level.SEVERE, null, ex);
         }

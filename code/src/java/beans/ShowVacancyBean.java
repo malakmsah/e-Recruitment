@@ -41,6 +41,12 @@ public class ShowVacancyBean implements Serializable {
 
     private int id;
     private int seekerId;
+    
+    private String position;
+    private String description;
+    private Timestamp created_at;
+    
+    private int recruiterId;
 
     public int getSeekerId() {
         return seekerId;
@@ -49,10 +55,6 @@ public class ShowVacancyBean implements Serializable {
     public void setSeekerId(int seekerId) {
         this.seekerId = seekerId;
     }
-    private String position;
-    private String description;
-    private Timestamp created_at;
-    private int recruiterId;
 
     public int getRecruiterId() {
         return recruiterId;
@@ -138,6 +140,6 @@ public class ShowVacancyBean implements Serializable {
             Logger.getLogger(ShowVacancyBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        sessionBean.navigate("browse_vacancies");
+        sessionBean.navigate("browse");
     }
 }

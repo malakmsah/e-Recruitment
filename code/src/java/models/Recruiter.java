@@ -6,7 +6,6 @@
 package models;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -23,7 +22,6 @@ public class Recruiter implements Serializable {
     private String email;
     private String about;
     private int number_of_employees;
-    private Date founded_at;
     private Timestamp created_at;
 
     public int getId() {
@@ -96,14 +94,6 @@ public class Recruiter implements Serializable {
 
     public void setNumberOfEmployees(int number_of_employees) {
         this.number_of_employees = number_of_employees;
-    }
-
-    public Date getFoundedAt() {
-        return founded_at;
-    }
-
-    public void setFoundedAt(Date founded_at) {
-        this.founded_at = founded_at;
     }
 
     public Timestamp getCreatedAt() {

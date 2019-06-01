@@ -39,7 +39,6 @@ public class AddEditRecruiterBean implements Serializable {
     private String email;
     private String about;
     private int number_of_employees;
-    private Date founded_at;
     private Timestamp created_at;
 
     private final RecruiterDao recruiterDao = new RecruiterDao();
@@ -73,7 +72,6 @@ public class AddEditRecruiterBean implements Serializable {
                     email = recruiter.getEmail();
                     about = recruiter.getAbout();
                     number_of_employees = recruiter.getNumberOfEmployees();
-                    founded_at = recruiter.getFoundedAt();
                     created_at = recruiter.getCreatedAt();
                     address = recruiterAddressDao.getRecruiterAddress(recruiter.getId());
                     if (address == null) {
@@ -165,14 +163,6 @@ public class AddEditRecruiterBean implements Serializable {
         this.number_of_employees = number_of_employees;
     }
 
-    public Date getFoundedAt() {
-        return founded_at;
-    }
-
-    public void setFoundedAt(Date birth_date) {
-        this.founded_at = birth_date;
-    }
-
     public Timestamp getCreatedAt() {
         return created_at;
     }
@@ -190,7 +180,6 @@ public class AddEditRecruiterBean implements Serializable {
             recruiterData.setPassword(password);
             recruiterData.setEmail(email);
             recruiterData.setPhone(phone);
-            //recruiter.setFoundedAt(new java.sql.Date(founded_at.getTime()));
             recruiterData.setNumberOfEmployees(number_of_employees);
             recruiterDao.insertRecruiter(recruiterData);
         } catch (Exception ex) {

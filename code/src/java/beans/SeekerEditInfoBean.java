@@ -98,7 +98,7 @@ public class SeekerEditInfoBean implements Serializable {
     public void init() {
         genders.add("Male");
         genders.add("Female");
-
+        Seeker seeker;
         try {
             id = loginBean.getId();
             interests = interestDao.getAll();
@@ -109,6 +109,8 @@ public class SeekerEditInfoBean implements Serializable {
             for (int i = 0; i < educations.size(); i++) {
                 educationsMajors.add(educations.get(i).getMajor());
             }
+            seeker = seekerDao.getSeekerById(id);
+            firstname = seeker.getFirstname();
 
         } catch (Exception ex) {
             Logger.getLogger(SeekerEditInfoBean.class.getName()).log(Level.SEVERE, null, ex);

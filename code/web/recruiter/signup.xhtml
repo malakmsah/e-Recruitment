@@ -77,20 +77,6 @@
                         </p:inputText>
                         <h:message for="numberOfEmployee"/>
 
-                        <p:outputLabel  style="color: #0B70BE" value="#{msgs.foundedAt}:" for="foundedAt"/>
-                        <p:calendar id="foundedAt"
-                                    value="#{AddEditRecruiterBean.founded_at}"
-                                    dir="#{langBean.dir}"
-                                    pattern="yyyy-MM-dd HH:mm" 
-                                    navigator="true"
-                                    yearRange="c-20:c+1"
-                                    timeInput="true"
-                                    style="width:300px"
-                                    > 
-                            <p:watermark for="foundedAt" value="#{msgs.foundedAt}"/> 
-                        </p:calendar>
-                        <h:message for="foundedAt"/>                                        
-
                         <p:outputLabel  style="color: #0B70BE" value="#{msgs.country}:" for="country"/>
                         <p:selectOneMenu value="#{AddEditRecruiterBean.address.country}"
                                          id="country">
@@ -161,7 +147,7 @@
                 <p:commandButton   value="#{msgs.have_an_account}"                                                
                                    style="width:300px; height:35px; margin-top:25px;  float:#{langBean.styleFloat};  margin-left: 230px;  background-color: #428BCA; margin-bottom: 25px;" 
                                    ajax="false"
-                                   action="login?faces-redirect=true" />
+                                   action="/recruiter/login?faces-redirect=true" />
             </h:form>
         </ui:decorate>
     </h:body>

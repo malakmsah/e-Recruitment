@@ -80,7 +80,7 @@ public class RecruiterLoginBean implements Serializable {
 
         }
         if (success) {
-            navigate("edit");
+            navigate("/recruiter/edit");
         }
     }
 

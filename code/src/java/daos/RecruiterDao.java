@@ -33,6 +33,7 @@ public class RecruiterDao extends ConnectionDao {
                     rs.getInt("MAX_ID");
                 }
                 rs.close();
+                ps.close();
             }
             return maxId;
         } catch (SQLException e) {
@@ -53,10 +54,9 @@ public class RecruiterDao extends ConnectionDao {
                     + " PHONE,"
                     + " EMAIL,"
                     + " ABOUT,"
-                    + " NUMBER_OF_EMPLOYEE,"
-                    + " FOUNDED_AT,"
-                    + " CREATED_AT," + ")"
-                    + " VALUES ((?,?,?,?,?,?,?,?,?,?,?)";
+                    + " NUMBER_OF_EMPLOYEES"
+                    + ")"
+                    + " VALUES (?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setInt(1, maxID);
                 ps.setString(2, recruiters.getNameAr());
@@ -67,10 +67,9 @@ public class RecruiterDao extends ConnectionDao {
                 ps.setString(7, recruiters.getEmail());
                 ps.setString(8, recruiters.getAbout());
                 ps.setInt(9, recruiters.getNumberOfEmployees());
-//            ps.setTimestamp(10, new Timestamp(recruiters.getFoundedAt().getTime()));
-//            ps.setTimestamp(11, new Timestamp(new java.util.Date().getTime()));
 
-ps.executeUpdate();
+                ps.executeUpdate();
+                ps.close();
             }
 
         } catch (SQLException e) {
@@ -84,15 +83,14 @@ ps.executeUpdate();
             Connection conn = getConnection();
 
             String sql = "UPDATE RECRUITERS SET "
-                    + "NAME_AR=?,"
+                    + " NAME_AR=?,"
                     + " NAME_EN=?,"
                     + " USERNAME=?,"
                     + " PASSWORD=?,"
                     + " PHONE=?,"
                     + " EMAIL=?,"
                     + " ABOUT=?,"
-                    + " NUMBER_OF_EMPLOYEE=?,"
-                    + " FOUNDED_AT=?,"
+                    + " NUMBER_OF_EMPLOYEES=?,"
                     + " WHERE ID=?";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, recruiters.getNameAr());
@@ -103,9 +101,10 @@ ps.executeUpdate();
                 ps.setString(6, recruiters.getEmail());
                 ps.setString(7, recruiters.getAbout());
                 ps.setInt(8, recruiters.getNumberOfEmployees());
-//            ps.setTimestamp(9, new Timestamp(recruiters.getFoundedAt().getTime()));
+                ps.setInt(9, recruiters.getId());
 
-ps.executeUpdate();
+                ps.executeUpdate();
+                ps.close();
             }
 
         } catch (SQLException e) {
@@ -118,17 +117,18 @@ ps.executeUpdate();
             Recruiter recruiter = new Recruiter();
             Connection conn = getConnection();
 
-            String sql = "SELECT *  FROM RECRUITER  WHERE  ID=?";
+            String sql = "SELECT *  FROM RECRUITER WHERE ID=?";
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setInt(1, id);
-                
+
                 ResultSet rs = ps.executeQuery();
-                
+
                 while (rs.next()) {
                     recruiter = populateRecruiter(rs);
                 }
-                
+
                 rs.close();
+                ps.close();
             }
             return recruiter;
         } catch (SQLException e) {
@@ -149,7 +149,6 @@ ps.executeUpdate();
         recruiter.setPhone(rs.getInt("PHONE"));
         recruiter.setNumberOfEmployees(rs.getInt("NUMBER_OF_EMPLOYEES"));
         recruiter.setCreatedAt(rs.getTimestamp("CREATED_AT"));
-        recruiter.setFoundedAt(rs.getDate("FOUNDED_AT"));
 
         return recruiter;
     }
@@ -168,8 +167,7 @@ ps.executeUpdate();
                     + " PHONE,"
                     + " EMAIL,"
                     + " ABOUT,"
-                    + " NUMBER_OF_EMPLOYEE,"
-                    + " FOUNDED_AT,"
+                    + " NUMBER_OF_EMPLOYEES,"
                     + " CREATED_AT"
                     + " FROM JOB_SEEKER WHERE USERNAME=? AND PASSWORD=?";
 
